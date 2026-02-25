@@ -1,46 +1,34 @@
-# Style Guides
+# Style Guides Plugin
 
-Writing style guides, tone of voice, terminology management
+> Create writing style guides and manage terminology for consistent documentation across teams.
 
-## What's Included
+## Purpose
 
-### Agents
-- **Style Guide Curator** - Specialized agent for Writing style guides, tone of voice, terminology management
+Establishes and enforces writing standards so that documentation reads as if one person wrote it, regardless of how many contributors there are. Covers voice, tone, formatting, terminology, and language rules.
 
-### Commands
-- `/style-guide` - Quick-access command for style-guides workflows
+## Agents
 
-### Skills
-- **Style Guide Patterns** - Pattern library and knowledge base for style-guides
+| Agent | Role |
+|-------|------|
+| `style-guide-architect` | Designs comprehensive writing style rules for technical content |
+| `terminology-manager` | Creates and maintains glossaries with consistent term usage |
 
-## Quick Start
+## Commands
 
-1. Copy this plugin to your Claude Code plugins directory
-2. Use the agent for guided, multi-step workflows
-3. Use the command for quick, targeted operations
-4. Reference the skill for patterns and best practices
+| Command | Description |
+|---------|-------------|
+| `/style-guide` | Create a writing style guide for a project or organization |
 
-## Usage Examples
+## Skills
+
+| Skill | Description |
+|-------|-------------|
+| `style-guide-frameworks` | Frameworks for building writing style guides |
+
+## Usage
 
 ```
-# Use the command directly
-/style-guide analyze
-
-# Use the command with specific input
-/style-guide generate --context "your project"
-
-# Reference patterns from the skill
-"Apply style-guide-patterns patterns to this implementation"
+/style-guide --scope project --voice professional
+/style-guide --scope api-docs --base google
+/style-guide --type terminology --domain fintech
 ```
-
-## Key Patterns
-
-- Follow established conventions for style-guides
-- Validate inputs before processing
-- Document decisions and rationale
-- Test outputs against requirements
-- Iterate based on feedback
-
-## Related Plugins
-
-Check the main README for related plugins in this collection.

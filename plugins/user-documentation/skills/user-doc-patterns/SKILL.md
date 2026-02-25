@@ -1,88 +1,101 @@
 # User Doc Patterns
 
-A comprehensive pattern library and knowledge base for user-documentation.
+> Patterns for writing clear, accessible end-user documentation.
 
 ## Knowledge Base
 
-### Core Concepts
-- **Fundamentals**: The foundational principles that govern user-documentation
-- **Terminology**: Standard vocabulary and definitions used in the domain
-- **Standards**: Industry standards and specifications that apply
-- **Tools**: Common tools and frameworks used for user-documentation
+### User Documentation vs Developer Documentation
 
-### Architecture Principles
-- Separation of concerns within user-documentation implementations
-- Modularity and reusability of components
-- Scalability considerations for growing systems
-- Integration patterns with adjacent domains
+| User Docs | Developer Docs |
+|-----------|---------------|
+| Task-oriented ("How do I...") | Concept-oriented ("How does it work...") |
+| Plain language | Technical language |
+| Screenshots and visual aids | Code examples |
+| Step-by-step procedures | API references |
+| Feature names and UI labels | Function signatures and parameters |
+| Avoids technical internals | Explains technical internals |
 
-### Quality Attributes
-- **Correctness**: Implementations must meet functional requirements
-- **Maintainability**: Code and artifacts should be easy to understand and modify
-- **Performance**: Implementations should meet non-functional requirements
-- **Security**: Sensitive data and operations must be properly protected
+### Writing for Non-Technical Readers
+
+**Vocabulary rules:**
+- Use "click" not "select" or "actuate"
+- Use "type" not "enter" or "input"
+- Use "choose" not "select from the dropdown"
+- Use "go to" not "navigate to"
+- Use "shows" not "renders" or "displays"
+- Use "saves" not "persists"
+
+**Sentence structure:**
+- Active voice: "Click the button" not "The button should be clicked"
+- Imperative for instructions: "Open Settings" not "You should open Settings"
+- Short sentences: Under 25 words per sentence
+- One idea per sentence
+
+**Formatting:**
+- Bold exact UI labels: Click **Save Changes**
+- Use > for navigation paths: **Settings** > **Team** > **Permissions**
+- One action per numbered step
+- Use notes/warnings for important caveats
+
+### Article Types
+
+**Walkthrough** (procedural):
+```
+Title: "How to [accomplish task]"
+Structure: Prerequisites > Steps > Confirmation > Related
+Use when: User needs to complete a specific task
+```
+
+**Overview** (conceptual):
+```
+Title: "[Feature name]: What it does and how it works"
+Structure: What > Why > Key concepts > Getting started link
+Use when: User needs to understand a feature before using it
+```
+
+**Troubleshooting** (problem-solving):
+```
+Title: "Fix: [problem description]"
+Structure: Symptom > Cause > Solution > Prevention
+Use when: User encounters a specific error or problem
+```
+
+**FAQ** (reference):
+```
+Title: "[Topic] FAQ"
+Structure: Grouped questions with direct answers
+Use when: Users have many small questions about a topic
+```
+
+### Screenshot Guidelines
+
+1. **Show only the relevant area** -- crop to the element being discussed
+2. **Annotate with arrows or highlights** -- draw attention to the specific button/field
+3. **Use consistent dimensions** -- same width for all screenshots in an article
+4. **Include alt text** -- describe what the screenshot shows for screen readers
+5. **Update on UI changes** -- stale screenshots are worse than no screenshots
+6. **Mark screenshot locations** -- use `![Description](path)` markers even before screenshots exist
 
 ## Patterns
 
-### Pattern 1: Structured Approach
-- Start with requirements analysis
-- Design before implementing
-- Validate against acceptance criteria
-- Document decisions and rationale
-
-### Pattern 2: Iterative Refinement
-- Begin with a minimal viable implementation
-- Gather feedback early and often
-- Refine based on real-world usage
-- Continuously improve based on metrics
-
-### Pattern 3: Convention Over Configuration
-- Follow established conventions where they exist
-- Configure only what needs to deviate from defaults
-- Document any non-standard choices
-- Prefer explicit over implicit behavior
-
-### Pattern 4: Defense in Depth
-- Validate at multiple levels
-- Handle errors gracefully at each layer
-- Provide meaningful feedback for failures
-- Log important events for debugging
+1. **Task-First Titles**: "How to export your data" not "Data Export Feature." Users search for tasks, not features.
+2. **Prerequisites Gate**: List everything the user needs before starting. Prevents frustration from discovering requirements mid-task.
+3. **One Path**: Document the recommended path. Do not document every possible way to accomplish the task. Mention alternatives in a note.
+4. **Confirmation Step**: End every procedure with how to verify it worked. Users need to know they succeeded.
+5. **Next Actions**: After completing a task, suggest what the user might want to do next. Keeps them productive.
 
 ## Anti-Patterns
 
-### Anti-Pattern 1: Premature Optimization
-- Optimizing before understanding the actual bottleneck
-- Adding complexity without measured need
-- Sacrificing readability for marginal performance gains
-
-### Anti-Pattern 2: Copy-Paste Without Understanding
-- Duplicating code without understanding its purpose
-- Propagating bugs through mechanical copying
-- Missing opportunities for abstraction
-
-### Anti-Pattern 3: Ignoring Standards
-- Deviating from conventions without clear justification
-- Creating inconsistency across the codebase
-- Making onboarding harder for new contributors
-
-### Anti-Pattern 4: Over-Engineering
-- Building for hypothetical future requirements
-- Adding abstraction layers without clear benefit
-- Creating complex solutions for simple problems
+1. **Engineer Brain**: Explaining database schema when the user just wants to change their password.
+2. **The Options Overload**: Documenting every setting, toggle, and checkbox in one article. Focus on the common tasks.
+3. **Passive Instructions**: "The settings page can be accessed by clicking..." -- just say "Click **Settings**."
+4. **Assuming Navigation**: "Go to the billing page" -- say where it is: "Click **Settings** in the sidebar, then click **Billing**."
+5. **Jargon Leak**: Using words like "authentication," "endpoint," "payload," or "schema" in user-facing docs.
+6. **No Context**: Step 1: "Click Create." Where is the Create button? On what page? What does it create?
 
 ## References
 
-### Documentation
-- Official documentation for related tools and frameworks
-- Industry standards and specifications
-- Community best practices and guides
-
-### Learning Resources
-- Tutorials and walkthroughs for beginners
-- Advanced guides for experienced practitioners
-- Case studies and real-world examples
-
-### Tools
-- Development tools for user-documentation
-- Testing and validation tools
-- Monitoring and observability tools
+- [Microsoft Writing Style Guide](https://learn.microsoft.com/en-us/style-guide/welcome/)
+- [Google Developer Documentation Style Guide](https://developers.google.com/style)
+- [Plainlanguage.gov](https://www.plainlanguage.gov/)
+- [Nielsen Norman Group - Help and Documentation](https://www.nngroup.com/articles/help-and-documentation/)

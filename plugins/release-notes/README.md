@@ -1,46 +1,34 @@
-# Release Notes
+# Release Notes Plugin
 
-Release note generation, user-facing changelogs, migration guides
+> Generate audience-aware release notes and upgrade/migration guides for software releases.
 
-## What's Included
+## Purpose
 
-### Agents
-- **Release Notes Writer** - Specialized agent for Release note generation, user-facing changelogs, migration guides
+Creates release communication that bridges the gap between what changed technically and what users need to know. Handles both the "what's new" announcement and the "how to upgrade" migration guide.
 
-### Commands
-- `/release-notes` - Quick-access command for release-notes workflows
+## Agents
 
-### Skills
-- **Release Note Patterns** - Pattern library and knowledge base for release-notes
+| Agent | Role |
+|-------|------|
+| `release-note-writer` | Creates audience-segmented release notes (developers, end users, admins) |
+| `migration-guide-writer` | Produces upgrade and migration documentation for breaking changes |
 
-## Quick Start
+## Commands
 
-1. Copy this plugin to your Claude Code plugins directory
-2. Use the agent for guided, multi-step workflows
-3. Use the command for quick, targeted operations
-4. Reference the skill for patterns and best practices
+| Command | Description |
+|---------|-------------|
+| `/release-notes` | Generate release notes for a version |
 
-## Usage Examples
+## Skills
+
+| Skill | Description |
+|-------|-------------|
+| `release-note-formats` | Release note structures for different audiences and channels |
+
+## Usage
 
 ```
-# Use the command directly
-/release-notes analyze
-
-# Use the command with specific input
-/release-notes generate --context "your project"
-
-# Reference patterns from the skill
-"Apply release-note-patterns patterns to this implementation"
+/release-notes --version v2.0.0 --since v1.9.0
+/release-notes --version v2.0.0 --audience end-user
+/release-notes --version v2.0.0 --include-migration
 ```
-
-## Key Patterns
-
-- Follow established conventions for release-notes
-- Validate inputs before processing
-- Document decisions and rationale
-- Test outputs against requirements
-- Iterate based on feedback
-
-## Related Plugins
-
-Check the main README for related plugins in this collection.

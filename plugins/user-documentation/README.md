@@ -1,46 +1,34 @@
-# User Documentation
+# User Documentation Plugin
 
-End-user docs, help centers, product documentation
+> Create end-user documentation, help center articles, and FAQ pages for non-technical audiences.
 
-## What's Included
+## Purpose
 
-### Agents
-- **User Doc Writer** - Specialized agent for End-user docs, help centers, product documentation
+Produces documentation for the people who use your product, not the people who build it. Translates technical functionality into task-oriented guides that help users accomplish their goals without needing to understand implementation details.
 
-### Commands
-- `/doc-user` - Quick-access command for user-documentation workflows
+## Agents
 
-### Skills
-- **User Doc Patterns** - Pattern library and knowledge base for user-documentation
+| Agent | Role |
+|-------|------|
+| `user-guide-writer` | Creates end-user documentation with task-oriented structure |
+| `faq-builder` | Generates FAQ pages from support tickets, user research, and product knowledge |
 
-## Quick Start
+## Commands
 
-1. Copy this plugin to your Claude Code plugins directory
-2. Use the agent for guided, multi-step workflows
-3. Use the command for quick, targeted operations
-4. Reference the skill for patterns and best practices
+| Command | Description |
+|---------|-------------|
+| `/user-doc` | Generate user-facing documentation for a feature or workflow |
 
-## Usage Examples
+## Skills
+
+| Skill | Description |
+|-------|-------------|
+| `user-doc-patterns` | Patterns for writing clear, accessible end-user documentation |
+
+## Usage
 
 ```
-# Use the command directly
-/doc-user analyze
-
-# Use the command with specific input
-/doc-user generate --context "your project"
-
-# Reference patterns from the skill
-"Apply user-doc-patterns patterns to this implementation"
+/user-doc --feature "team management" --audience end-user
+/user-doc --feature "billing" --type faq
+/user-doc --feature "data export" --type walkthrough
 ```
-
-## Key Patterns
-
-- Follow established conventions for user-documentation
-- Validate inputs before processing
-- Document decisions and rationale
-- Test outputs against requirements
-- Iterate based on feedback
-
-## Related Plugins
-
-Check the main README for related plugins in this collection.
