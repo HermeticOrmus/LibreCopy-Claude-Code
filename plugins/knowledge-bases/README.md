@@ -1,46 +1,63 @@
-# Knowledge Bases
+# Knowledge Bases Plugin
 
-Knowledge base creation, FAQ systems, searchable docs
+> Design knowledge base taxonomy, optimize article findability, manage content lifecycle, and measure deflection rates. Covers Confluence, Notion, GitBook, Zendesk, and Readme.io.
 
-## What's Included
+## Purpose
 
-### Agents
-- **Kb Architect** - Specialized agent for Knowledge base creation, FAQ systems, searchable docs
+Produces knowledge bases that users can actually find answers in. Addresses the most common KB failure mode: content exists but users cannot find it. Covers taxonomy design, controlled vocabulary, article templates, search optimization, lifecycle management, and deflection metrics.
 
-### Commands
-- `/build-kb` - Quick-access command for knowledge-bases workflows
+## Agents
 
-### Skills
-- **Kb Patterns** - Pattern library and knowledge base for knowledge-bases
+| Agent | Role |
+|-------|------|
+| `kb-architect` | Taxonomy design, search optimization, content migration planning, article lifecycle, metrics |
+
+## Commands
+
+| Command | Description |
+|---------|-------------|
+| `/build-kb structure` | Design KB taxonomy and navigation for given user types |
+| `/build-kb migrate` | Plan content migration between platforms |
+| `/build-kb optimize` | Audit search performance and article findability |
+| `/build-kb measure` | Generate measurement plan and analyze health metrics |
+
+## Skills
+
+| Skill | Description |
+|-------|-------------|
+| `kb-patterns` | Article title patterns, taxonomy, article lifecycle, search optimization, anti-patterns |
 
 ## Quick Start
 
-1. Copy this plugin to your Claude Code plugins directory
-2. Use the agent for guided, multi-step workflows
-3. Use the command for quick, targeted operations
-4. Reference the skill for patterns and best practices
+```bash
+# Design KB structure for a product
+/build-kb structure --describe "SaaS tool with end users, admins, and developers"
 
-## Usage Examples
+# Audit search performance
+/build-kb optimize --zero-results-report ./search-analytics.csv
 
-```
-# Use the command directly
-/build-kb analyze
+# Plan migration from Zendesk to Confluence
+/build-kb migrate --from zendesk --to confluence --audit first
 
-# Use the command with specific input
-/build-kb generate --context "your project"
-
-# Reference patterns from the skill
-"Apply kb-patterns patterns to this implementation"
+# Set up measurement framework
+/build-kb measure --platform zendesk --output measurement-plan.md
 ```
 
-## Key Patterns
+## When to Use
 
-- Follow established conventions for knowledge-bases
-- Validate inputs before processing
-- Document decisions and rationale
-- Test outputs against requirements
-- Iterate based on feedback
+- Building a knowledge base from scratch (taxonomy before content)
+- Existing KB has low search success rate (users don't find what they need)
+- Migrating from one platform to another (plan before moving)
+- Quarterly KB health review (audit staleness, measure deflection)
+- Setting up article review cadences
 
-## Related Plugins
+## Platform Comparison
 
-Check the main README for related plugins in this collection.
+| Platform | Best For | Limitations |
+|----------|---------|-------------|
+| Zendesk Guide | Customer support deflection | Weak developer docs support |
+| Confluence | Internal team knowledge | Complex permissions, slow UI |
+| Notion | Flexible team wiki | Limited search, no version control |
+| GitBook | Developer-facing docs | Less suitable for end-user support |
+| Readme.io | Developer hub + API docs | Expensive at scale |
+| Outline | Open-source team wiki | Self-hosted infrastructure needed |

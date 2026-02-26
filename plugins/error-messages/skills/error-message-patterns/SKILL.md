@@ -1,88 +1,226 @@
 # Error Message Patterns
 
-A comprehensive pattern library and knowledge base for error-messages.
+## The Three-Part Error Message
 
-## Knowledge Base
+Every error message should answer three questions:
+1. What happened? (context - what operation failed on what resource)
+2. Why? (cause - the specific condition that prevented success)
+3. Now what? (remedy - the concrete action to take)
 
-### Core Concepts
-- **Fundamentals**: The foundational principles that govern error-messages
-- **Terminology**: Standard vocabulary and definitions used in the domain
-- **Standards**: Industry standards and specifications that apply
-- **Tools**: Common tools and frameworks used for error-messages
+```
+# Bad: answers none of the three questions
+"An error occurred"
+"Error 422"
+"Invalid input"
 
-### Architecture Principles
-- Separation of concerns within error-messages implementations
-- Modularity and reusability of components
-- Scalability considerations for growing systems
-- Integration patterns with adjacent domains
+# Bad: answers what but not why or how
+"Validation failed"
 
-### Quality Attributes
-- **Correctness**: Implementations must meet functional requirements
-- **Maintainability**: Code and artifacts should be easy to understand and modify
-- **Performance**: Implementations should meet non-functional requirements
-- **Security**: Sensitive data and operations must be properly protected
+# Good: answers all three
+"Unable to create the subscription (what): the selected plan 'enterprise_annual'
+requires a verified business email address (why). Add a verified business email
+at /account/email or choose a different plan (how to fix)."
+```
 
-## Patterns
+## RFC 7807 Problem Details
 
-### Pattern 1: Structured Approach
-- Start with requirements analysis
-- Design before implementing
-- Validate against acceptance criteria
-- Document decisions and rationale
+The standard JSON structure for API error responses. Use `application/problem+json` as the Content-Type.
 
-### Pattern 2: Iterative Refinement
-- Begin with a minimal viable implementation
-- Gather feedback early and often
-- Refine based on real-world usage
-- Continuously improve based on metrics
+```json
+{
+  "type": "https://api.example.com/errors/rate-limit-exceeded",
+  "title": "Rate Limit Exceeded",
+  "status": 429,
+  "detail": "You have made 1000 requests in the last 60 seconds. The limit is 1000/minute.",
+  "instance": "/api/v2/users",
+  "error_id": "err_01HXA83KPQRST",
+  "retry_after": 47
+}
+```
 
-### Pattern 3: Convention Over Configuration
-- Follow established conventions where they exist
-- Configure only what needs to deviate from defaults
-- Document any non-standard choices
-- Prefer explicit over implicit behavior
+### type vs title vs detail
+- `type`: Stable URI, same for all instances of this error type. Points to documentation.
+- `title`: Human-readable label, same for all instances. Use for programmatic display (e.g., toast notifications).
+- `detail`: Specific to this occurrence. Includes the actual values, field names, context.
 
-### Pattern 4: Defense in Depth
-- Validate at multiple levels
-- Handle errors gracefully at each layer
-- Provide meaningful feedback for failures
-- Log important events for debugging
+```json
+// type and title are the same for all rate limit errors:
+"type": "https://api.example.com/errors/rate-limit-exceeded"
+"title": "Rate Limit Exceeded"
+
+// detail changes per occurrence:
+"detail": "You have made 1000 requests in the last 60 seconds. The limit is 1000/minute."
+// vs
+"detail": "You have made 50 requests in the last second. The burst limit is 50/second."
+```
+
+## Error Code Hierarchy Design
+
+Use namespaced string codes, not raw integers. String codes are self-documenting in logs.
+
+```
+# Namespace pattern: DOMAIN_CATEGORY_SPECIFIC
+
+AUTH_TOKEN_MISSING          # No token in request
+AUTH_TOKEN_EXPIRED          # Token is past expiry
+AUTH_TOKEN_INVALID          # Token signature invalid
+AUTH_SCOPE_INSUFFICIENT     # Valid token, wrong scope
+
+PAYMENT_CARD_DECLINED       # Processor declined the charge
+PAYMENT_CARD_EXPIRED        # Card expiration date past
+PAYMENT_INSUFFICIENT_FUNDS  # Not enough balance
+PAYMENT_CURRENCY_UNSUPPORTED # Currency not available
+
+ORDER_ITEM_OUT_OF_STOCK     # Cannot fulfill line item
+ORDER_MINIMUM_NOT_MET       # Below minimum order value
+ORDER_DUPLICATE             # Idempotency key reused with different params
+```
+
+### Numeric range assignment (when using codes)
+```
+1000-1999: Authentication and authorization
+2000-2999: Validation and input errors
+3000-3999: Payment and billing
+4000-4999: Resource state conflicts
+5000-5999: External service failures
+9000-9999: Internal server errors (do not expose details)
+```
+
+## HTTP Status Code Semantics
+
+Correct status codes prevent unnecessary support tickets:
+
+```
+400 Bad Request:
+  Request structure is invalid. JSON parse error, wrong content type.
+  The client must change the request format.
+
+401 Unauthorized:
+  No valid authentication. Client must authenticate.
+  Include WWW-Authenticate header indicating the scheme.
+
+403 Forbidden:
+  Authenticated but not authorized. Client is known, action is denied.
+  Do NOT use 404 to hide existence of a resource (that's security theater
+  for most cases; use it deliberately when appropriate).
+
+404 Not Found:
+  Resource does not exist, or does not exist for this user.
+  Use consistently.
+
+409 Conflict:
+  State conflict. Duplicate creation, edit conflict, stale version.
+  Include the conflicting state in the response.
+
+422 Unprocessable:
+  Request is valid JSON and correct content type, but fails validation.
+  Prefer 422 over 400 for business rule violations.
+  Always include per-field errors.
+
+429 Too Many Requests:
+  Rate limit exceeded. Include Retry-After header.
+```
+
+## User-Facing vs Developer-Facing Errors
+
+User-facing (displayed in UI):
+```json
+{
+  "title": "Payment Failed",
+  "detail": "Your card was declined. Try a different payment method or contact your bank."
+}
+```
+
+Developer-facing (included in the same response for API consumers):
+```json
+{
+  "title": "Payment Failed",
+  "detail": "Card declined by processor.",
+  "error_id": "err_01HXA83K",
+  "processor_code": "insufficient_funds",
+  "help_url": "https://docs.example.com/errors/payment-card-declined"
+}
+```
+
+What is **never** in the response:
+- Stack traces
+- SQL queries
+- Internal file paths
+- System usernames or service account names
+- Database error messages
+- Environment variable names
+
+## Localization-Ready Error Strings
+
+Write error strings for localization from day one:
+
+```json
+// Bad: hardcoded sentence that cannot be translated naturally
+"The field email is required and must be a valid email address"
+
+// Good: template with interpolation placeholder
+"The field '{{field}}' must be a valid {{format}} (e.g., {{example}})"
+```
+
+Avoid:
+- Idioms: "The token has been burned" (doesn't translate well)
+- Directional language: "See above" (position changes with layout)
+- Concatenated strings: `"Invalid " + field` (word order differs by language)
 
 ## Anti-Patterns
 
-### Anti-Pattern 1: Premature Optimization
-- Optimizing before understanding the actual bottleneck
-- Adding complexity without measured need
-- Sacrificing readability for marginal performance gains
+### Leaking internal details
+```json
+// Bad: exposes internal architecture
+{
+  "error": "SQLSTATE[23000]: Integrity constraint violation: Duplicate entry 'user@example.com' for key 'users.email'"
+}
 
-### Anti-Pattern 2: Copy-Paste Without Understanding
-- Duplicating code without understanding its purpose
-- Propagating bugs through mechanical copying
-- Missing opportunities for abstraction
+// Good: user-meaningful error
+{
+  "type": "https://api.example.com/errors/duplicate-email",
+  "title": "Email Already Registered",
+  "status": 409,
+  "detail": "An account with this email address already exists. Sign in instead or use password recovery."
+}
+```
 
-### Anti-Pattern 3: Ignoring Standards
-- Deviating from conventions without clear justification
-- Creating inconsistency across the codebase
-- Making onboarding harder for new contributors
+### Single validation error message
+```json
+// Bad: forces user to resubmit to find other errors
+{ "error": "email is invalid" }
 
-### Anti-Pattern 4: Over-Engineering
-- Building for hypothetical future requirements
-- Adding abstraction layers without clear benefit
-- Creating complex solutions for simple problems
+// Good: all errors at once
+{
+  "errors": [
+    { "field": "email", "message": "Must be a valid email address" },
+    { "field": "password", "message": "Must be at least 12 characters" }
+  ]
+}
+```
+
+### Blaming the user
+```
+# Bad: accusatory
+"You provided an invalid token"
+"Your request is malformed"
+
+# Good: describes the condition
+"The authentication token is invalid or has expired"
+"The request body is not valid JSON"
+```
+
+### No actionable remedy
+```
+# Bad: tells the user what happened but not what to do
+"Your subscription has expired"
+
+# Good: tells the user what happened and what to do next
+"Your subscription expired on March 15, 2025. Renew at /billing/subscription to restore access."
+```
 
 ## References
-
-### Documentation
-- Official documentation for related tools and frameworks
-- Industry standards and specifications
-- Community best practices and guides
-
-### Learning Resources
-- Tutorials and walkthroughs for beginners
-- Advanced guides for experienced practitioners
-- Case studies and real-world examples
-
-### Tools
-- Development tools for error-messages
-- Testing and validation tools
-- Monitoring and observability tools
+- [RFC 7807 Problem Details for HTTP APIs](https://datatracker.ietf.org/doc/html/rfc7807)
+- [RFC 9457 (updates to RFC 7807)](https://datatracker.ietf.org/doc/html/rfc9457)
+- [HTTP Status Codes](https://httpstatuses.io/)
+- [Error Messages: Being Humble, Human, and Helpful](https://www.nngroup.com/articles/error-message-guidelines/)

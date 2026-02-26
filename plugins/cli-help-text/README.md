@@ -1,46 +1,63 @@
-# Cli Help Text
+# CLI Help Text Plugin
 
-CLI help messages, man pages, usage examples
+> Write POSIX/GNU-compliant `--help` output, man pages, and CLI documentation. Generate BATS test cases for CLI behavior verification.
 
-## What's Included
+## Purpose
 
-### Agents
-- **Cli Doc Specialist** - Specialized agent for CLI help messages, man pages, usage examples
+Produces professional command-line interface documentation: `--help` text that follows GNU conventions, man pages in nroff format, subcommand hierarchies, and exit code tables. The CLI's help text is often the entire documentation a developer uses - it deserves the same quality bar as API reference docs.
 
-### Commands
-- `/doc-cli` - Quick-access command for cli-help-text workflows
+## Agents
 
-### Skills
-- **Cli Help Patterns** - Pattern library and knowledge base for cli-help-text
+| Agent | Role |
+|-------|------|
+| `cli-doc-specialist` | Help text generation, man page authoring, POSIX/GNU convention enforcement, BATS test generation |
+
+## Commands
+
+| Command | Description |
+|---------|-------------|
+| `/doc-cli generate` | Generate help text or man page from source code or description |
+| `/doc-cli validate` | Check help text against POSIX/GNU conventions |
+| `/doc-cli man-page` | Generate full man page skeleton |
+| `/doc-cli test` | Generate BATS test cases for CLI behavior |
+
+## Skills
+
+| Skill | Description |
+|-------|-------------|
+| `cli-help-patterns` | POSIX usage line notation, alignment conventions, examples best practices, exit code documentation |
 
 ## Quick Start
 
-1. Copy this plugin to your Claude Code plugins directory
-2. Use the agent for guided, multi-step workflows
-3. Use the command for quick, targeted operations
-4. Reference the skill for patterns and best practices
+```bash
+# Generate help text from source
+/doc-cli generate --from-source ./src/cli.py --format help-text
 
-## Usage Examples
+# Validate existing help text
+/doc-cli validate "$(mycli --help)"
 
-```
-# Use the command directly
-/doc-cli analyze
+# Generate man page
+/doc-cli man-page --name mycli --section 1
 
-# Use the command with specific input
-/doc-cli generate --context "your project"
-
-# Reference patterns from the skill
-"Apply cli-help-patterns patterns to this implementation"
+# Generate BATS tests
+/doc-cli test --from-help "$(mycli --help)" --output ./test/mycli.bats
 ```
 
-## Key Patterns
+## When to Use
 
-- Follow established conventions for cli-help-text
-- Validate inputs before processing
-- Document decisions and rationale
-- Test outputs against requirements
-- Iterate based on feedback
+- Writing CLI documentation for a new tool
+- Reviewing existing help text for POSIX compliance
+- Generating man pages for distribution (Homebrew, apt, pacman)
+- Creating automated tests for CLI behavior
+- Auditing CLI help text for missing defaults, examples, or exit codes
 
-## Related Plugins
+## Tooling Reference
 
-Check the main README for related plugins in this collection.
+| Tool | Purpose |
+|------|---------|
+| [BATS-core](https://bats-core.readthedocs.io/) | Bash automated testing for CLI tools |
+| [shellspec](https://shellspec.info/) | BDD-style shell testing |
+| [cram](https://bitheap.org/cram/) | Functional testing from shell sessions |
+| [clap](https://docs.rs/clap/) | Rust CLI framework with help generation |
+| [cobra](https://cobra.dev/) | Go CLI framework |
+| [Click](https://click.palletsprojects.com/) | Python CLI framework |

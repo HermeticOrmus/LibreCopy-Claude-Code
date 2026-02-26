@@ -1,46 +1,72 @@
-# Specification Writing
+# Specification Writing Plugin
 
-Technical specifications, requirements docs, interface specs
+> Write technical specifications, requirements documents, and interface contracts that two engineers can implement independently and produce compatible systems.
 
-## What's Included
+## Purpose
 
-### Agents
-- **Spec Writer** - Specialized agent for Technical specifications, requirements docs, interface specs
+A specification is only valuable if it removes ambiguity, not adds it. This plugin produces specifications that are testable (every requirement has an acceptance criterion), complete (error cases and non-requirements explicitly stated), and unambiguous (SMART requirements, state machines for stateful systems, full interface contracts for system boundaries).
 
-### Commands
-- `/write-spec` - Quick-access command for specification-writing workflows
+Covers functional specs, interface contracts, RFC format, state machine documentation, and requirements review for testability.
 
-### Skills
-- **Spec Writing Patterns** - Pattern library and knowledge base for specification-writing
+## Agents
+
+| Agent | Role |
+|-------|------|
+| `spec-writer` | Functional specs, interface contracts, RFCs, state machines, requirements review |
+
+## Commands
+
+| Command | Description |
+|---------|-------------|
+| `/write-spec draft` | Generate a specification from a feature description |
+| `/write-spec review` | Analyze spec for completeness, testability, and ambiguity |
+| `/write-spec derive` | Generate test cases or acceptance criteria from a spec |
+| `/write-spec validate` | Check spec against SMART criteria and completeness |
+
+## Skills
+
+| Skill | Description |
+|-------|-------------|
+| `spec-writing-patterns` | Testability test, Gherkin criteria, interface contracts, state machines, anti-patterns |
 
 ## Quick Start
 
-1. Copy this plugin to your Claude Code plugins directory
-2. Use the agent for guided, multi-step workflows
-3. Use the command for quick, targeted operations
-4. Reference the skill for patterns and best practices
+```bash
+# Write a functional specification for a feature
+/write-spec draft --type functional --feature "User authentication with MFA"
 
-## Usage Examples
+# Specify an interface between two services
+/write-spec draft --type interface --from payment-service --to order-service
 
+# Draft an RFC for a team decision
+/write-spec draft --type rfc --problem "Session auth prevents horizontal scaling"
+
+# Review spec for quality issues
+/write-spec review docs/specs/auth-spec.md --check-testability --check-completeness
+
+# Generate test cases from a spec
+/write-spec derive test-cases docs/specs/auth-spec.md
 ```
-# Use the command directly
-/write-spec analyze
 
-# Use the command with specific input
-/write-spec generate --context "your project"
+## Specification Quality Criteria
 
-# Reference patterns from the skill
-"Apply spec-writing-patterns patterns to this implementation"
-```
+Every spec this plugin generates satisfies:
 
-## Key Patterns
+- [ ] All requirements use "shall" (mandatory) or "should" (recommended), never vague language
+- [ ] Every requirement has a testable acceptance criterion (Gherkin format)
+- [ ] Non-functional requirements have quantified targets (not "fast" but "≤ 200ms p99")
+- [ ] Scope section explicitly lists what is out of scope
+- [ ] All stateful features have an explicit state machine with prohibited transitions
+- [ ] Interface contracts specify both sides' obligations (retry, idempotency, error handling)
+- [ ] Error cases are specified (not just the happy path)
+- [ ] Open questions have owners and deadlines
 
-- Follow established conventions for specification-writing
-- Validate inputs before processing
-- Document decisions and rationale
-- Test outputs against requirements
-- Iterate based on feedback
+## Requirement Types
 
-## Related Plugins
-
-Check the main README for related plugins in this collection.
+| Type | Format | Use When |
+|------|--------|----------|
+| Functional | "The system shall [behavior] when [condition]" | Feature behavior |
+| Non-functional | Metric + target + measurement method | Performance, reliability, security |
+| Interface | Full request/response contract + error cases | System integration points |
+| State | State machine with explicit transitions | Anything with status/lifecycle |
+| Acceptance | Gherkin Given/When/Then | QA-driven development |

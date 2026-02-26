@@ -1,46 +1,58 @@
-# Proposal Writing
+# Proposal Writing Plugin
 
-Technical proposals, RFCs, design documents
+> Write internal RFCs, Technical Design Documents, and one-pagers that build alignment before work begins. Structured templates for problem-first proposals with concrete alternatives and measurable success criteria.
 
-## What's Included
+## Purpose
 
-### Agents
-- **Proposal Writer** - Specialized agent for Technical proposals, RFCs, design documents
+Produces technical proposals that get approved rather than blocked. Focuses on problem-first structure, substantive alternatives analysis, success metrics defined before implementation, and a review process that surfaces real objections. Covers the full lifecycle from draft through approval to post-implementation status update.
 
-### Commands
-- `/write-proposal` - Quick-access command for proposal-writing workflows
+## Agents
 
-### Skills
-- **Proposal Patterns** - Pattern library and knowledge base for proposal-writing
+| Agent | Role |
+|-------|------|
+| `proposal-writer` | RFC drafting, TDD/PRD writing, one-pager proposals, review facilitation, status tracking |
+
+## Commands
+
+| Command | Description |
+|---------|-------------|
+| `/write-proposal draft` | Generate new proposal from problem description |
+| `/write-proposal review` | Review for completeness, alternatives depth, metric definition |
+| `/write-proposal finalize` | Update status and record decision rationale |
+| `/write-proposal track` | List all proposals with their current status |
+
+## Skills
+
+| Skill | Description |
+|-------|-------------|
+| `proposal-patterns` | Problem-first structure, alternatives quality bar, success metrics, anti-patterns |
 
 ## Quick Start
 
-1. Copy this plugin to your Claude Code plugins directory
-2. Use the agent for guided, multi-step workflows
-3. Use the command for quick, targeted operations
-4. Reference the skill for patterns and best practices
+```bash
+# Draft an RFC for a major change
+/write-proposal draft --type rfc --problem "Session auth blocks horizontal scaling"
 
-## Usage Examples
+# Review existing RFC for completeness
+/write-proposal review docs/rfcs/RFC-0023.md --check-alternatives
 
-```
-# Use the command directly
-/write-proposal analyze
+# Record the final decision
+/write-proposal finalize docs/rfcs/RFC-0023.md --status accepted
 
-# Use the command with specific input
-/write-proposal generate --context "your project"
-
-# Reference patterns from the skill
-"Apply proposal-patterns patterns to this implementation"
+# List all open RFCs
+/write-proposal track --dir docs/rfcs/ --status under-review
 ```
 
-## Key Patterns
+## Document Type Guide
 
-- Follow established conventions for proposal-writing
-- Validate inputs before processing
-- Document decisions and rationale
-- Test outputs against requirements
-- Iterate based on feedback
+| Type | Use When | Length |
+|------|----------|--------|
+| RFC | Major architectural or process change | 2-5 pages |
+| TDD | Implementation design for approved feature | 3-8 pages |
+| PRD | Product requirements before engineering design | 2-4 pages |
+| One-pager | Small decisions, process tweaks, FYI proposals | 1 page |
 
-## Related Plugins
-
-Check the main README for related plugins in this collection.
+## RFC Examples in the Wild
+- [Rust RFC process and repository](https://github.com/rust-lang/rfcs) - well-structured community RFCs
+- [Python PEPs](https://peps.python.org/) - formal specification/proposal format
+- [TC39 proposals](https://github.com/tc39/proposals) - JavaScript language proposals

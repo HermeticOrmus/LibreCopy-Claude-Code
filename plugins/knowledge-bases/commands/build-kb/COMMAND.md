@@ -1,87 +1,165 @@
 # /build-kb
 
-A quick-access command for knowledge-bases workflows in Claude Code.
+Design knowledge base structure, migrate content, optimize search, and measure performance.
 
 ## Trigger
 
-`/build-kb [action] [options]`
+`/build-kb <action> [options]`
 
-## Input
+## Actions
 
-### Actions
-- `analyze` - Analyze existing knowledge-bases implementation
-- `generate` - Generate new knowledge-bases artifacts
-- `improve` - Suggest improvements to current implementation
-- `validate` - Check implementation against best practices
-- `document` - Generate documentation for knowledge-bases artifacts
-
-### Options
-- `--context <path>` - Specify the file or directory to operate on
-- `--format <type>` - Output format (markdown, json, yaml)
-- `--verbose` - Include detailed explanations
-- `--dry-run` - Preview changes without applying them
-
-## Process
-
-### Step 1: Context Gathering
-- Read relevant files and configuration
-- Identify the current state of knowledge-bases artifacts
-- Determine applicable standards and conventions
-
-### Step 2: Analysis
-- Evaluate against kb-patterns patterns
-- Identify gaps, issues, and opportunities
-- Prioritize findings by impact and effort
-
-### Step 3: Execution
-- Apply the requested action
-- Generate or modify artifacts as needed
-- Validate changes against requirements
-
-### Step 4: Output
-- Present results in the requested format
-- Include actionable next steps
-- Flag any items requiring human decision
-
-## Output
-
-### Success
-```
-## Knowledge Bases - [Action] Complete
-
-### Changes Made
-- [List of changes]
-
-### Validation
-- [Checks passed]
-
-### Next Steps
-- [Recommended follow-up actions]
-```
-
-### Error
-```
-## Knowledge Bases - [Action] Failed
-
-### Issue
-[Description of the problem]
-
-### Suggested Fix
-[How to resolve the issue]
-```
-
-## Examples
+### `structure`
+Design or review knowledge base taxonomy and navigation.
 
 ```bash
-# Analyze current implementation
-/build-kb analyze
+/build-kb structure --describe "B2B SaaS with end users, admins, and developers"
+/build-kb structure --review ./kb-audit.md
+/build-kb structure --platform confluence --output kb-design.md
+```
 
-# Generate new artifacts
-/build-kb generate --context ./src
+### `migrate`
+Plan and execute knowledge base content migration.
 
-# Validate against best practices
-/build-kb validate --verbose
+```bash
+/build-kb migrate --from zendesk --to confluence --audit first
+/build-kb migrate --plan --source ./export.json --output migration-plan.md
+```
 
-# Generate documentation
-/build-kb document --format markdown
+### `optimize`
+Audit search performance and article findability.
+
+```bash
+/build-kb optimize --zero-results-report ./search-analytics.csv
+/build-kb optimize --audit-titles ./articles/  # Check title format
+/build-kb optimize --check-orphans  # Articles with no inbound links
+```
+
+### `measure`
+Generate KB measurement plan and analyze health metrics.
+
+```bash
+/build-kb measure --platform zendesk --output measurement-plan.md
+/build-kb measure --report --csat-data ./csat.csv --search-data ./search.csv
+```
+
+## Options
+
+| Option | Description |
+|--------|-------------|
+| `--platform <name>` | confluence, notion, gitbook, zendesk, readme (affects output format) |
+| `--describe <text>` | Describe the product and user types |
+| `--output <path>` | Output file |
+| `--audit` | Run audit before action |
+| `--from <platform>` | Source platform for migration |
+| `--to <platform>` | Target platform for migration |
+
+## KB Article Template
+
+```markdown
+---
+title: [Question format: "How do I...?" or task format: "Reset your password"]
+tags: [billing, account, authentication, ...]
+audience: [new-user | power-user | admin | developer]
+product_area: [feature or area name]
+last_reviewed: YYYY-MM-DD
+---
+
+# [Title]
+
+[Summary: 1-2 sentences. What does this article help with? Include search keywords naturally.]
+
+## [Before you begin / Prerequisites (optional)]
+
+You'll need:
+- [Requirement 1]
+- [Requirement 2]
+
+## Steps
+
+1. Navigate to **[Location]** in the dashboard.
+
+2. Click **[Button or link name]**.
+
+   ![Screenshot description](screenshot.png)
+
+3. [Continue with steps...]
+
+   > **Note**: [Important caveat if applicable]
+
+4. [Final step with success state]
+
+   You should see [expected outcome].
+
+## Troubleshooting
+
+**[Common error message or symptom]**
+[Solution]
+
+**[Another common issue]**
+[Solution]
+
+## Related articles
+
+- [Link to related article 1]
+- [Link to related article 2]
+
+---
+*Last reviewed: [date] · [Feedback: Was this helpful? Yes / No]*
+```
+
+## Taxonomy Design Template
+
+```markdown
+# Knowledge Base Taxonomy - [Product Name]
+
+## Top-Level Categories
+
+Limit to 5-7. Named from user perspective (their goal, not your team structure).
+
+| Category | User Goal | Target Audience |
+|----------|-----------|----------------|
+| Get Started | New to the product | New users |
+| [Main feature] | [User goal] | [Audience] |
+| Account & Billing | Manage their subscription | All users |
+| API & Developer Docs | Build integrations | Developers |
+| Troubleshooting | Fix problems | All users |
+
+## Controlled Tag Vocabulary
+
+Tags are a closed vocabulary. New tags require approval.
+
+**Audience**: new-user, power-user, admin, developer
+**Product area**: [list your features]
+**Content type**: getting-started, how-to, faq, reference, troubleshooting, policy
+
+## Article Lifecycle
+
+draft → (writer) → in-review → (SME + editor) → published → [scheduled review: 6 months] → archived
+
+## Review Schedule
+
+- How-to articles: review every 6 months
+- Reference articles: review after each release
+- Policy articles: review annually with legal
+- FAQ articles: review quarterly (update based on support ticket analysis)
+```
+
+## Search Optimization Checklist
+
+```
+Title format:
+  [ ] Starts with action verb or "How to" or "What is"
+  [ ] Contains the main search term within first 5 words
+  [ ] Under 70 characters (full display in search results)
+
+Content:
+  [ ] Summary paragraph contains key synonyms and related terms
+  [ ] Headings are scannable (bold the UI element names)
+  [ ] Internal links to at least 2 related articles
+  [ ] No internal jargon in title or summary
+
+Metadata:
+  [ ] Tags from controlled vocabulary
+  [ ] Audience tag set correctly
+  [ ] Last reviewed date within 6 months
 ```

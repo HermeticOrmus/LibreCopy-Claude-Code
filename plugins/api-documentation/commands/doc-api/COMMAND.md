@@ -1,87 +1,124 @@
 # /doc-api
 
-A quick-access command for api-documentation workflows in Claude Code.
+Generate, validate, publish, and diff API documentation from OpenAPI specs.
 
 ## Trigger
 
-`/doc-api [action] [options]`
+`/doc-api <action> [options]`
 
-## Input
+## Actions
 
-### Actions
-- `analyze` - Analyze existing api-documentation implementation
-- `generate` - Generate new api-documentation artifacts
-- `improve` - Suggest improvements to current implementation
-- `validate` - Check implementation against best practices
-- `document` - Generate documentation for api-documentation artifacts
-
-### Options
-- `--context <path>` - Specify the file or directory to operate on
-- `--format <type>` - Output format (markdown, json, yaml)
-- `--verbose` - Include detailed explanations
-- `--dry-run` - Preview changes without applying them
-
-## Process
-
-### Step 1: Context Gathering
-- Read relevant files and configuration
-- Identify the current state of api-documentation artifacts
-- Determine applicable standards and conventions
-
-### Step 2: Analysis
-- Evaluate against api-doc-patterns patterns
-- Identify gaps, issues, and opportunities
-- Prioritize findings by impact and effort
-
-### Step 3: Execution
-- Apply the requested action
-- Generate or modify artifacts as needed
-- Validate changes against requirements
-
-### Step 4: Output
-- Present results in the requested format
-- Include actionable next steps
-- Flag any items requiring human decision
-
-## Output
-
-### Success
-```
-## Api Documentation - [Action] Complete
-
-### Changes Made
-- [List of changes]
-
-### Validation
-- [Checks passed]
-
-### Next Steps
-- [Recommended follow-up actions]
-```
-
-### Error
-```
-## Api Documentation - [Action] Failed
-
-### Issue
-[Description of the problem]
-
-### Suggested Fix
-[How to resolve the issue]
-```
-
-## Examples
+### `generate`
+Generate OpenAPI spec from existing code or produce a spec skeleton.
 
 ```bash
-# Analyze current implementation
-/doc-api analyze
+/doc-api generate --source ./src/routes --output ./docs/openapi.yaml
+/doc-api generate --from-postman ./collection.json --output ./openapi.yaml
+/doc-api generate --skeleton --title "Payments API" --version 1.0.0
+```
 
-# Generate new artifacts
-/doc-api generate --context ./src
+### `validate`
+Lint the spec against OpenAPI rules and custom Spectral ruleset.
 
-# Validate against best practices
-/doc-api validate --verbose
+```bash
+/doc-api validate ./docs/openapi.yaml
+/doc-api validate ./docs/openapi.yaml --ruleset .spectral.yaml --format pretty
+```
 
-# Generate documentation
-/doc-api document --format markdown
+### `publish`
+Build rendered docs (Redoc or Swagger UI) for deployment.
+
+```bash
+/doc-api publish ./docs/openapi.yaml --renderer redoc --output ./dist/docs
+/doc-api publish ./docs/openapi.yaml --renderer scalar --base-url /api/docs
+```
+
+### `diff`
+Compare two spec versions and produce a changelog of breaking vs non-breaking changes.
+
+```bash
+/doc-api diff v1.0.0 v1.1.0 ./docs/openapi.yaml
+/doc-api diff ./docs/openapi-old.yaml ./docs/openapi-new.yaml --format markdown
+```
+
+## Options
+
+| Option | Description |
+|--------|-------------|
+| `--source <path>` | Source code directory to analyze |
+| `--output <path>` | Output file or directory |
+| `--renderer <name>` | redoc, swagger-ui, scalar (default: redoc) |
+| `--ruleset <path>` | Custom Spectral ruleset file |
+| `--format <type>` | Output format: yaml, json, markdown, html |
+| `--base-url <url>` | Base URL prefix for published docs |
+
+## Output Examples
+
+### `validate` output
+```
+Validating ./docs/openapi.yaml against OpenAPI 3.1...
+
+ERRORS (2) - must fix:
+  [paths./users.post.responses] Missing 422 response for operation with requestBody
+  [components.schemas.Order.properties.status] enum values undocumented (no description)
+
+WARNINGS (3) - should fix:
+  [paths./users.get] Missing operationId
+  [paths./products/{id}.get.parameters] Path param 'id' has no example
+  [info] No contact.url defined
+
+SUGGESTIONS (1):
+  Consider adding x-codeSamples to /users.post for curl + JS examples
+
+Result: INVALID - fix 2 errors before publishing
+```
+
+### `diff` output (markdown)
+```markdown
+## API Changes: v1.0.0 → v1.1.0
+
+### Breaking Changes
+- `DELETE /users/{id}` removed (was deprecated in v1.0.0)
+- `GET /orders` response: `meta.total` renamed to `meta.total_count`
+
+### New Endpoints
+- `GET /users/{id}/sessions` - List active sessions for a user
+- `DELETE /users/{id}/sessions/{session_id}` - Revoke a session
+
+### Non-Breaking Changes
+- `POST /orders` now accepts optional `metadata` object
+- All endpoints: added `X-Request-Id` to response headers schema
+```
+
+## Template: OpenAPI info block
+
+```yaml
+openapi: 3.1.0
+info:
+  title: Acme Payments API
+  version: 2.1.0
+  description: |
+    Process payments, manage subscriptions, and retrieve transaction history.
+
+    ## Authentication
+    All endpoints require a Bearer token obtained via `POST /auth/token`.
+
+    ## Rate Limits
+    1000 requests/minute per API key. Rate limit headers returned on every response.
+
+    ## Versioning
+    Breaking changes increment the major version. The URL prefix `/v2/` will remain
+    stable for the lifetime of this major version.
+  contact:
+    name: API Support
+    url: https://developers.acme.com/support
+    email: api@acme.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+  - url: https://api.acme.com/v2
+    description: Production
+  - url: https://api.sandbox.acme.com/v2
+    description: Sandbox (no real charges)
 ```

@@ -1,88 +1,219 @@
-# Readme Patterns
+# README Patterns
 
-A comprehensive pattern library and knowledge base for readme-engineering.
+## The 5-Second Test
 
-## Knowledge Base
+A developer landing on a README has 5 seconds before they decide to stay or leave. The test:
+- Close the README
+- Ask: "What does this project do?"
+- If you cannot answer in one sentence, the README failed
 
-### Core Concepts
-- **Fundamentals**: The foundational principles that govern readme-engineering
-- **Terminology**: Standard vocabulary and definitions used in the domain
-- **Standards**: Industry standards and specifications that apply
-- **Tools**: Common tools and frameworks used for readme-engineering
+The one-liner must complete this template: "[Name] is a [category] that [value proposition]."
 
-### Architecture Principles
-- Separation of concerns within readme-engineering implementations
-- Modularity and reusability of components
-- Scalability considerations for growing systems
-- Integration patterns with adjacent domains
+```markdown
+# Bad: feature list as description
+A comprehensive toolkit with logging, caching, retry logic, and more.
 
-### Quality Attributes
-- **Correctness**: Implementations must meet functional requirements
-- **Maintainability**: Code and artifacts should be easy to understand and modify
-- **Performance**: Implementations should meet non-functional requirements
-- **Security**: Sensitive data and operations must be properly protected
+# Good: one-liner that passes the 5-second test
+Retry is a TypeScript library that wraps any async function with
+configurable exponential backoff and jitter.
+```
 
-## Patterns
+## The README Pyramid
 
-### Pattern 1: Structured Approach
-- Start with requirements analysis
-- Design before implementing
-- Validate against acceptance criteria
-- Document decisions and rationale
+Readers scan in layers. Structure content for multiple attention spans:
 
-### Pattern 2: Iterative Refinement
-- Begin with a minimal viable implementation
-- Gather feedback early and often
-- Refine based on real-world usage
-- Continuously improve based on metrics
+```
+Layer 1: One-liner + badges         (2 seconds)  - Every visitor reads this
+Layer 2: Install + Quick Start      (30 seconds) - Evaluating visitors read this
+Layer 3: Features + API overview    (2 minutes)  - Interested visitors read this
+Layer 4: Full API reference + docs  (10+ min)    - Committed users read this
+```
 
-### Pattern 3: Convention Over Configuration
-- Follow established conventions where they exist
-- Configure only what needs to deviate from defaults
-- Document any non-standard choices
-- Prefer explicit over implicit behavior
+Rules:
+- Layers 1-2 must fit on one screen without scrolling
+- Never put caveats or warnings before the quick start
+- Do not require account creation before showing code
 
-### Pattern 4: Defense in Depth
-- Validate at multiple levels
-- Handle errors gracefully at each layer
-- Provide meaningful feedback for failures
-- Log important events for debugging
+## Badge Selection
+
+### Always Include
+```markdown
+<!-- CI/CD status - shows the project is actively maintained -->
+[![CI](https://github.com/{owner}/{repo}/actions/workflows/ci.yml/badge.svg)](...)
+
+<!-- Version - shows the project is actively released -->
+[![npm version](https://img.shields.io/npm/v/{package})](...)
+
+<!-- License - required for legal clarity -->
+[![License](https://img.shields.io/github/license/{owner}/{repo})](./LICENSE)
+```
+
+### Include If You Have It
+```markdown
+<!-- Coverage - only add if you actually maintain coverage -->
+[![Coverage](https://codecov.io/gh/{owner}/{repo}/branch/main/graph/badge.svg)](...)
+
+<!-- Downloads - social proof when number is meaningful (>100/week) -->
+[![npm downloads](https://img.shields.io/npm/dm/{package})](...)
+```
+
+### Never Add
+- "PRs welcome" (every repo welcomes PRs)
+- "Awesome" list badges (self-congratulatory)
+- Counter badges that never update
+- Badges for tools you do not actually use
+
+## Install Section Pattern
+
+Cover every supported package manager. Users do not switch tools because of a missing one-liner.
+
+```markdown
+## Install
+
+```bash
+npm install {package-name}
+```
+
+```bash
+yarn add {package-name}
+```
+
+```bash
+pnpm add {package-name}
+```
+```
+
+For non-npm packages, match the ecosystem:
+- Python: `pip install`, `uv add`, `poetry add`
+- Rust: `cargo add`
+- Go: `go get`
+
+## Quick Start: The Copy-Paste Test
+
+Every quick start code block must pass the copy-paste test: paste into a clean project with documented prerequisites and it must work.
+
+```markdown
+# Bad: missing imports, unexplained prerequisites
+const client = new Client({ token });
+const result = await client.search({ query: 'test' });
+
+# Good: complete, runnable example
+import { SearchClient } from '@example/search';
+
+const client = new SearchClient({
+  token: process.env.SEARCH_TOKEN,
+});
+
+const results = await client.search({
+  query: 'hello world',
+  limit: 10,
+});
+
+console.log(results.hits); // [{ id: '1', title: '...', score: 0.9 }]
+```
+
+Quick start checklist:
+- [ ] Has imports/requires at the top
+- [ ] Shows where configuration comes from (env var, not magic constant)
+- [ ] Shows what the output looks like (comment with example output)
+- [ ] Is under 20 lines
+- [ ] Works with only the documented prerequisites
+
+## Project Type Patterns
+
+### Library/SDK README Order
+1. Name + one-liner
+2. Badges (CI, version, license)
+3. Install (all package managers)
+4. Quick Start (working example < 20 lines)
+5. API (key exports, main class)
+6. Configuration (if complex)
+7. Contributing
+8. License
+
+### CLI Tool README Order
+1. Name + one-liner
+2. Badges
+3. Install (npm -g, brew, direct download)
+4. Usage (`tool --help` output or common commands)
+5. Examples (real-world command invocations)
+6. All flags/options (table)
+7. Configuration file format (if applicable)
+8. Contributing / License
+
+### Service/API README Order
+1. Name + one-liner
+2. Architecture diagram (Mermaid or image)
+3. Prerequisites (Docker, env vars, ports)
+4. Running locally (copy-paste commands)
+5. API endpoints overview
+6. Environment variables table
+7. Deployment
+8. Contributing / License
 
 ## Anti-Patterns
 
-### Anti-Pattern 1: Premature Optimization
-- Optimizing before understanding the actual bottleneck
-- Adding complexity without measured need
-- Sacrificing readability for marginal performance gains
+### The Elevator Pitch README
+```
+# Bad: marketing copy instead of technical description
+Welcome to AwesomeTool, the revolutionary solution that transforms
+the way development teams collaborate...
 
-### Anti-Pattern 2: Copy-Paste Without Understanding
-- Duplicating code without understanding its purpose
-- Propagating bugs through mechanical copying
-- Missing opportunities for abstraction
+# Good: direct technical description
+AwesomeTool is a CLI that syncs local file changes to a remote
+Docker container without restarting the container.
+```
 
-### Anti-Pattern 3: Ignoring Standards
-- Deviating from conventions without clear justification
-- Creating inconsistency across the codebase
-- Making onboarding harder for new contributors
+### The Dependency Wall
+```
+# Bad: prerequisites buried after installation
+npm install my-tool
 
-### Anti-Pattern 4: Over-Engineering
-- Building for hypothetical future requirements
-- Adding abstraction layers without clear benefit
-- Creating complex solutions for simple problems
+# Then later in the document...
+Note: Requires Node.js 18+, Redis 7+, and PostgreSQL 14+.
+
+# Good: prerequisites before install
+## Prerequisites
+- Node.js 18+
+- Redis 7+ (for session storage)
+- PostgreSQL 14+ (for data persistence)
+
+## Install
+npm install my-tool
+```
+
+### The Stale Screenshot
+Only include screenshots if you commit to updating them. A screenshot showing old UI erodes trust faster than no screenshot at all. If you include screenshots, add a comment in the PR template: "Did UI change? Update README screenshot."
+
+### The Promise Without Proof
+If you claim the library is "blazing fast" or "zero-dependency," prove it:
+```markdown
+# Bad
+Extremely fast JSON parsing library.
+
+# Good
+Parses JSON 2-4x faster than JSON.parse for objects > 10KB.
+[Benchmarks](./benchmarks)
+```
+
+## Table of Contents
+
+Only add a Table of Contents if the README exceeds four screen-lengths (approximately 1500 words). When added:
+
+```markdown
+## Contents
+
+- [Install](#install)
+- [Quick Start](#quick-start)
+- [API](#api)
+- [Configuration](#configuration)
+- [Contributing](#contributing)
+- [License](#license)
+```
+
+Use `#lowercase-with-hyphens` anchor links. GitHub auto-generates anchors from headings.
 
 ## References
-
-### Documentation
-- Official documentation for related tools and frameworks
-- Industry standards and specifications
-- Community best practices and guides
-
-### Learning Resources
-- Tutorials and walkthroughs for beginners
-- Advanced guides for experienced practitioners
-- Case studies and real-world examples
-
-### Tools
-- Development tools for readme-engineering
-- Testing and validation tools
-- Monitoring and observability tools
+- [Standard README Specification (RichardLitt)](https://github.com/RichardLitt/standard-readme)
+- [Shields.io Badge API](https://shields.io/)
+- [GitHub: About READMEs](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes)

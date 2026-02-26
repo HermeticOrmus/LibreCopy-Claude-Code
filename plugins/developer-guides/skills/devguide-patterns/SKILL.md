@@ -1,88 +1,199 @@
-# Devguide Patterns
+# Developer Guide Patterns
 
-A comprehensive pattern library and knowledge base for developer-guides.
+## Diátaxis in Practice
 
-## Knowledge Base
+### Tutorial characteristics
+- The user is in a **learning** state, not trying to accomplish a real task
+- Provide a safe sandbox environment (don't operate on real data)
+- Every step must succeed - no choices, no optional paths
+- Show expected output after every step
+- The goal is the learning experience, not the artifact built
 
-### Core Concepts
-- **Fundamentals**: The foundational principles that govern developer-guides
-- **Terminology**: Standard vocabulary and definitions used in the domain
-- **Standards**: Industry standards and specifications that apply
-- **Tools**: Common tools and frameworks used for developer-guides
+```markdown
+# Tutorial: Build Your First Webhook Handler
 
-### Architecture Principles
-- Separation of concerns within developer-guides implementations
-- Modularity and reusability of components
-- Scalability considerations for growing systems
-- Integration patterns with adjacent domains
+In this tutorial, you will build a simple webhook receiver that logs
+incoming events from the payment API.
 
-### Quality Attributes
-- **Correctness**: Implementations must meet functional requirements
-- **Maintainability**: Code and artifacts should be easy to understand and modify
-- **Performance**: Implementations should meet non-functional requirements
-- **Security**: Sensitive data and operations must be properly protected
+**What you'll learn:**
+- How webhook payloads are structured
+- How to verify webhook signatures
+- How to respond to webhook events
 
-## Patterns
+**What you will NOT need**: an existing account or real payment data.
+We use the sandbox environment throughout.
+```
 
-### Pattern 1: Structured Approach
-- Start with requirements analysis
-- Design before implementing
-- Validate against acceptance criteria
-- Document decisions and rationale
+### How-To characteristics
+- The user **knows what they want** and needs to accomplish it efficiently
+- No background explanation in the steps - link to explanation docs instead
+- Assume the setup is done - link to getting-started, don't repeat it
+- Title is "How to [task]" - always starts with "How to"
 
-### Pattern 2: Iterative Refinement
-- Begin with a minimal viable implementation
-- Gather feedback early and often
-- Refine based on real-world usage
-- Continuously improve based on metrics
+```markdown
+# How to Configure Webhook Signature Verification
 
-### Pattern 3: Convention Over Configuration
-- Follow established conventions where they exist
-- Configure only what needs to deviate from defaults
-- Document any non-standard choices
-- Prefer explicit over implicit behavior
+**Prerequisites:**
+- Webhook endpoint set up (see [Creating a Webhook Endpoint](/guides/create-webhook))
+- Your webhook secret from the dashboard
 
-### Pattern 4: Defense in Depth
-- Validate at multiple levels
-- Handle errors gracefully at each layer
-- Provide meaningful feedback for failures
-- Log important events for debugging
+## Steps
+
+1. Store the webhook secret in an environment variable:
+
+   ```bash
+   export WEBHOOK_SECRET="whsec_your_secret_here"
+   ```
+
+2. Verify the signature in your handler:
+
+   ```python
+   import hmac, hashlib
+
+   def verify_signature(payload: bytes, signature: str, secret: str) -> bool:
+       expected = hmac.new(secret.encode(), payload, hashlib.sha256).hexdigest()
+       return hmac.compare_digest(f"sha256={expected}", signature)
+   ```
+
+3. Return 200 immediately, process asynchronously:
+   ...
+```
+
+## Code Example Best Practices
+
+### Minimal but complete
+```python
+# Bad: incomplete example (what is client? what does .charge return?)
+result = client.charge(amount=1000)
+print(result)
+
+# Good: complete, runnable, handles the error case
+import os
+from acme import AcmeClient
+
+client = AcmeClient(api_key=os.environ["ACME_API_KEY"])
+
+try:
+    charge = client.charges.create(
+        amount=1000,       # $10.00 in cents
+        currency="usd",
+        source="tok_visa",  # Test card token
+        description="Order #1234",
+    )
+    print(f"Charged {charge.amount_formatted}: {charge.id}")
+except acme.CardError as e:
+    print(f"Card declined: {e.user_message}")
+```
+
+### Show both success and error paths
+Every code example in a developer guide should show:
+1. The success path
+2. At least one likely error and how to handle it
+
+### Expected output blocks
+```markdown
+Run the server:
+
+```bash
+python server.py
+```
+
+You should see:
+```
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [28720]
+```
+```
+
+The expected output block prevents "is this working?" anxiety. It is the most underused element in developer documentation.
+
+## Prerequisites Format
+
+Never describe prerequisites in prose. Use a structured table or checklist:
+
+```markdown
+| Requirement | Version | Verify | Install |
+|-------------|---------|--------|---------|
+| Python | 3.11+ | `python --version` | [python.org](https://python.org) |
+| pip | 23+ | `pip --version` | Included with Python |
+| Redis | 7.0+ | `redis-server --version` | `brew install redis` or [redis.io](https://redis.io) |
+
+**Accounts needed:**
+- [ ] Acme account with API key ([sign up free](https://acme.com/signup))
+- [ ] Stripe account in test mode (optional, for payment examples)
+```
+
+## Progressive Tutorial Structure
+
+Each step should end in a testable state:
+
+```
+Step 1: Scaffold → `python app.py` runs without error
+Step 2: Add database → `python app.py` connects successfully, logs "DB connected"
+Step 3: Add first endpoint → `curl localhost:8000/health` returns `{"status": "ok"}`
+Step 4: Add authentication → `curl localhost:8000/users` returns 401 without token
+Step 5: Test auth → `curl -H "Authorization: Bearer test" localhost:8000/users` returns user list
+```
+
+## Troubleshooting Section Placement
+
+Place troubleshooting at the end of each step that commonly fails, not in a separate appendix.
+
+```markdown
+## Step 3: Configure the database
+
+[step content]
+
+**If you see "Connection refused":**
+This usually means the database server isn't running.
+Start it with: `brew services start postgresql` (macOS) or `sudo systemctl start postgresql` (Linux)
+
+**If you see "role does not exist":**
+Create the role: `createuser -s $(whoami)`
+```
 
 ## Anti-Patterns
 
-### Anti-Pattern 1: Premature Optimization
-- Optimizing before understanding the actual bottleneck
-- Adding complexity without measured need
-- Sacrificing readability for marginal performance gains
+### Tutorial that requires production setup
+```markdown
+# Bad: Tutorial requires existing account with real data
+## Prerequisites
+- An active subscription (minimum Pro plan)
+- API key from production dashboard
+- At least 10,000 rows in your database
 
-### Anti-Pattern 2: Copy-Paste Without Understanding
-- Duplicating code without understanding its purpose
-- Propagating bugs through mechanical copying
-- Missing opportunities for abstraction
+# Good: Tutorial uses sandbox/demo data
+## Prerequisites
+- Free developer account (sign up at sandbox.acme.com)
+- (All data used in this tutorial is generated test data)
+```
 
-### Anti-Pattern 3: Ignoring Standards
-- Deviating from conventions without clear justification
-- Creating inconsistency across the codebase
-- Making onboarding harder for new contributors
+### How-to that teaches
+```markdown
+# Bad: How-to with embedded explanation (slow, distracts from task)
+## How to Add Authentication
 
-### Anti-Pattern 4: Over-Engineering
-- Building for hypothetical future requirements
-- Adding abstraction layers without clear benefit
-- Creating complex solutions for simple problems
+JWT (JSON Web Token) is an open standard (RFC 7519) that defines a compact
+and self-contained way for securely transmitting information as a JSON object.
+Tokens consist of three parts separated by dots...
+[3 paragraphs of JWT explanation before any steps]
+
+# Good: How-to with link to explanation
+## How to Add JWT Authentication
+
+For background on how JWT tokens work, see [Understanding Authentication Tokens](/concepts/jwt).
+
+**Prerequisites:** Running Express app (see [Getting Started](/get-started))
+
+1. Install the JWT library: `npm install jsonwebtoken`
+...
+```
+
+### Code that only works in the tutorial
+Examples should work outside the tutorial context. If a user copies the code into their own project, it should work with minimal changes (environment variable substitution, not architecture rewrites).
 
 ## References
-
-### Documentation
-- Official documentation for related tools and frameworks
-- Industry standards and specifications
-- Community best practices and guides
-
-### Learning Resources
-- Tutorials and walkthroughs for beginners
-- Advanced guides for experienced practitioners
-- Case studies and real-world examples
-
-### Tools
-- Development tools for developer-guides
-- Testing and validation tools
-- Monitoring and observability tools
+- [Diátaxis Framework](https://diataxis.fr/) - Daniele Procida
+- [Write the Docs community](https://www.writethedocs.org/)
+- [Google Technical Writing Courses](https://developers.google.com/tech-writing)
+- [The Documentation System](https://documentation.divio.com/) - Original Divio article by Procida

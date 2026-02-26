@@ -1,87 +1,146 @@
 # /build-readme
 
-A quick-access command for readme-engineering workflows in Claude Code.
+Generate, add badges, validate, and preview README files.
 
 ## Trigger
 
-`/build-readme [action] [options]`
+`/build-readme <action> [options]`
 
-## Input
+## Actions
 
-### Actions
-- `analyze` - Analyze existing readme-engineering implementation
-- `generate` - Generate new readme-engineering artifacts
-- `improve` - Suggest improvements to current implementation
-- `validate` - Check implementation against best practices
-- `document` - Generate documentation for readme-engineering artifacts
-
-### Options
-- `--context <path>` - Specify the file or directory to operate on
-- `--format <type>` - Output format (markdown, json, yaml)
-- `--verbose` - Include detailed explanations
-- `--dry-run` - Preview changes without applying them
-
-## Process
-
-### Step 1: Context Gathering
-- Read relevant files and configuration
-- Identify the current state of readme-engineering artifacts
-- Determine applicable standards and conventions
-
-### Step 2: Analysis
-- Evaluate against readme-patterns patterns
-- Identify gaps, issues, and opportunities
-- Prioritize findings by impact and effort
-
-### Step 3: Execution
-- Apply the requested action
-- Generate or modify artifacts as needed
-- Validate changes against requirements
-
-### Step 4: Output
-- Present results in the requested format
-- Include actionable next steps
-- Flag any items requiring human decision
-
-## Output
-
-### Success
-```
-## Readme Engineering - [Action] Complete
-
-### Changes Made
-- [List of changes]
-
-### Validation
-- [Checks passed]
-
-### Next Steps
-- [Recommended follow-up actions]
-```
-
-### Error
-```
-## Readme Engineering - [Action] Failed
-
-### Issue
-[Description of the problem]
-
-### Suggested Fix
-[How to resolve the issue]
-```
-
-## Examples
+### `generate`
+Generate a complete README for the current project.
 
 ```bash
-# Analyze current implementation
-/build-readme analyze
+/build-readme generate --type library
+/build-readme generate --type cli --pkg-manager npm,yarn,pnpm
+/build-readme generate --type service --include architecture-diagram
+/build-readme generate --from-package package.json
+```
 
-# Generate new artifacts
-/build-readme generate --context ./src
+### `badges`
+Generate Shields.io badge markdown for a project.
 
-# Validate against best practices
-/build-readme validate --verbose
+```bash
+/build-readme badges --ci github-actions --coverage codecov
+/build-readme badges --registry npm --pkg package-name
+/build-readme badges --all  # Generate comprehensive badge set
+```
 
-# Generate documentation
-/build-readme document --format markdown
+### `validate`
+Check README against standard-readme spec and best practices.
+
+```bash
+/build-readme validate README.md
+/build-readme validate README.md --spec standard-readme
+/build-readme validate README.md --check-links --check-badges
+```
+
+### `preview`
+Show what the README looks like rendered (for common elements).
+
+```bash
+/build-readme preview README.md --dark-mode
+/build-readme preview README.md --social-card  # 1280x640 social preview
+```
+
+## Options
+
+| Option | Description |
+|--------|-------------|
+| `--type <type>` | library, cli, service, monorepo, docs-site |
+| `--pkg-manager <list>` | npm, yarn, pnpm, bun, pip, cargo, go |
+| `--ci <provider>` | github-actions, circle, travis |
+| `--coverage <service>` | codecov, coveralls |
+| `--registry <name>` | npm, pypi, crates, hex |
+| `--spec <name>` | standard-readme, none |
+
+## Shields.io Badge Reference
+
+```markdown
+<!-- Build/CI -->
+![CI](https://github.com/{owner}/{repo}/actions/workflows/{workflow}.yml/badge.svg)
+![CircleCI](https://circleci.com/gh/{owner}/{repo}.svg?style=shield)
+
+<!-- Version -->
+![npm](https://img.shields.io/npm/v/{package})
+![PyPI](https://img.shields.io/pypi/v/{package})
+![Crates.io](https://img.shields.io/crates/v/{crate})
+![GitHub release](https://img.shields.io/github/v/release/{owner}/{repo})
+
+<!-- Coverage -->
+![Codecov](https://codecov.io/gh/{owner}/{repo}/branch/main/graph/badge.svg)
+![Coveralls](https://coveralls.io/repos/github/{owner}/{repo}/badge.svg)
+
+<!-- Downloads -->
+![npm downloads](https://img.shields.io/npm/dm/{package})
+![PyPI downloads](https://img.shields.io/pypi/dm/{package})
+![Docker Pulls](https://img.shields.io/docker/pulls/{owner}/{image})
+
+<!-- Meta -->
+![License](https://img.shields.io/github/license/{owner}/{repo})
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+![Code style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)
+```
+
+## Standard README Template (Library)
+
+```markdown
+# [Project Name]
+
+[One sentence. Format: "[Name] is a [category] that [value proposition]."]
+
+[![CI](https://github.com/{owner}/{repo}/actions/workflows/ci.yml/badge.svg)](https://github.com/{owner}/{repo}/actions)
+[![npm version](https://img.shields.io/npm/v/{package})](https://www.npmjs.com/package/{package})
+[![License](https://img.shields.io/github/license/{owner}/{repo})](./LICENSE)
+
+## Install
+
+```bash
+npm install {package-name}
+```
+
+```bash
+yarn add {package-name}
+```
+
+## Quick Start
+
+```typescript
+import { [MainExport] } from '{package-name}';
+
+const client = new [MainExport]({ apiKey: process.env.API_KEY });
+const result = await client.doSomething({ input: 'example' });
+console.log(result);
+```
+
+## API
+
+### `new [MainExport](options)`
+
+| Option | Type | Required | Description |
+|--------|------|----------|-------------|
+| `apiKey` | `string` | Yes | API key from the dashboard |
+| `baseUrl` | `string` | No | API base URL (default: production) |
+| `timeout` | `number` | No | Request timeout in ms (default: 30000) |
+
+### `client.doSomething(params)`
+
+[Description]
+
+**Parameters**: [Table or list]
+**Returns**: [What it returns]
+**Throws**: [What it throws]
+
+## Configuration
+
+See [Configuration Reference](./docs/configuration.md) for all available options.
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+## License
+
+[MIT](./LICENSE) © [Author]
 ```

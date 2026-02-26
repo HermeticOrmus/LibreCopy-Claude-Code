@@ -1,88 +1,174 @@
 # Release Note Patterns
 
-A comprehensive pattern library and knowledge base for release-notes.
+## Audience-First Writing
 
-## Knowledge Base
+The most common release note mistake: writing for the audience who built the feature, not the audience who uses it. Before writing, answer: "Who reads this, and what question are they trying to answer?"
 
-### Core Concepts
-- **Fundamentals**: The foundational principles that govern release-notes
-- **Terminology**: Standard vocabulary and definitions used in the domain
-- **Standards**: Industry standards and specifications that apply
-- **Tools**: Common tools and frameworks used for release-notes
+| Audience | Their Question | Write This |
+|----------|---------------|-----------|
+| End user | "Can I do something new?" | "You can now export reports as PDF" |
+| API developer | "Does this break my code?" | "Added `format` parameter to `export()`" |
+| DevOps | "Does this affect my deployment?" | "New required env var: `EXPORT_SERVICE_URL`" |
+| Internal | "What changed and why?" | Full technical description with PR link |
 
-### Architecture Principles
-- Separation of concerns within release-notes implementations
-- Modularity and reusability of components
-- Scalability considerations for growing systems
-- Integration patterns with adjacent domains
+## The Benefit-First Pattern
 
-### Quality Attributes
-- **Correctness**: Implementations must meet functional requirements
-- **Maintainability**: Code and artifacts should be easy to understand and modify
-- **Performance**: Implementations should meet non-functional requirements
-- **Security**: Sensitive data and operations must be properly protected
+Lead with the user benefit, follow with the technical detail:
 
-## Patterns
+```markdown
+# Bad: technical-first
+Added `maxRetries` parameter to `ApiClient` constructor with exponential backoff.
 
-### Pattern 1: Structured Approach
-- Start with requirements analysis
-- Design before implementing
-- Validate against acceptance criteria
-- Document decisions and rationale
+# Good: benefit-first
+API calls now automatically retry on transient failures.
 
-### Pattern 2: Iterative Refinement
-- Begin with a minimal viable implementation
-- Gather feedback early and often
-- Refine based on real-world usage
-- Continuously improve based on metrics
+The new `maxRetries` option (default: 3) controls retry behavior with
+exponential backoff. Set to 0 to disable retries.
+```
 
-### Pattern 3: Convention Over Configuration
-- Follow established conventions where they exist
-- Configure only what needs to deviate from defaults
-- Document any non-standard choices
-- Prefer explicit over implicit behavior
+## Breaking Change Pattern
 
-### Pattern 4: Defense in Depth
-- Validate at multiple levels
-- Handle errors gracefully at each layer
-- Provide meaningful feedback for failures
-- Log important events for debugging
+Breaking changes have exactly three required parts. Missing any one causes user frustration:
+
+```markdown
+### Breaking: Config file renamed from `.toolrc` to `.tool.config.json`
+
+**Why**: The new format supports comments and arrays of values that .rc syntax cannot.
+
+**Before (v1.x):**
+```
+# .toolrc
+timeout=30
+```
+
+**After (v2.0+):**
+```json
+// .tool.config.json
+{
+  "timeout": 30
+}
+```
+
+**Migrate**: Run `npx tool-migrate` to auto-convert your config file,
+or manually create `.tool.config.json` from the template in the docs.
+```
+
+What makes this work:
+- **What changed**: The config file name and format
+- **Why it changed**: Reason users can understand and accept
+- **How to migrate**: Automated option first, manual second
+
+## Deprecation Pattern
+
+Deprecations need an expiry date to be actionable:
+
+```markdown
+# Bad: deprecation without timeline
+`QueryBuilder.raw()` is deprecated. Use `QueryBuilder.sql()` instead.
+
+# Good: deprecation with deadline
+**Deprecated**: `QueryBuilder.raw()` will be removed in v4.0 (expected Q3 2025).
+
+Use `QueryBuilder.sql()` instead, which provides parameterized input
+and prevents SQL injection by default.
+
+```typescript
+// Before
+db.raw(`SELECT * FROM users WHERE id = ${userId}`);
+
+// After (parameterized -- prevents injection)
+db.sql`SELECT * FROM users WHERE id = ${userId}`;
+```
+```
+
+## Security Release Pattern
+
+Security releases follow a specific order of disclosure vs. disclosure:
+
+```markdown
+# Bad: too much detail before patch is widely deployed
+Fixed SQL injection in /api/users endpoint. The `name` parameter
+was concatenated directly into the query without sanitization.
+
+# Good: enough detail to verify patching, not enough to exploit
+### Security: Fixed input validation in user search (CVE-2024-XXXXX)
+
+All users should upgrade to v2.1.3. A security advisory with full
+technical details will be published 30 days after this release.
+
+**Affected versions**: v2.0.0 - v2.1.2
+**Fixed in**: v2.1.3
+**Severity**: High (CVSS 8.1)
+**Credit**: [Researcher Name] via responsible disclosure
+```
+
+## Version Comparison Link
+
+Every GitHub release must end with a comparison link. This is the most-clicked element for developers evaluating an upgrade:
+
+```markdown
+**Full Changelog**: https://github.com/{owner}/{repo}/compare/v{prev}...v{current}
+```
+
+Generate with: `git log v1.9.0..v2.0.0 --oneline`
+
+## Changelog vs. GitHub Release vs. Blog Post
+
+The same version produces different documents for different channels:
+
+| Channel | Audience | Length | Code Examples | Marketing Language |
+|---------|----------|--------|---------------|-------------------|
+| CHANGELOG.md | Developers | Complete | Yes | No |
+| GitHub Release | Developers | Medium | Key changes | Minimal |
+| Blog post | All | Long | Yes | Yes |
+| In-app notification | End users | Short (3-5 bullets) | No | Yes |
+| Email newsletter | End users | Short | No | Yes |
+
+Do not copy-paste between channels. Rewrite for each audience.
 
 ## Anti-Patterns
 
-### Anti-Pattern 1: Premature Optimization
-- Optimizing before understanding the actual bottleneck
-- Adding complexity without measured need
-- Sacrificing readability for marginal performance gains
+### The Git Log Dump
+```
+# Bad: raw git log as release notes
+- fix: resolve issue #123
+- chore: update dependencies
+- feat: add new endpoint
+- fix: typo in error message
 
-### Anti-Pattern 2: Copy-Paste Without Understanding
-- Duplicating code without understanding its purpose
-- Propagating bugs through mechanical copying
-- Missing opportunities for abstraction
+# Good: curated entries with user context
+### Bug Fixes
+- Fixed a crash that occurred when exporting large datasets (#123)
 
-### Anti-Pattern 3: Ignoring Standards
-- Deviating from conventions without clear justification
-- Creating inconsistency across the codebase
-- Making onboarding harder for new contributors
+### New Features
+- Added CSV export for all report types
+```
 
-### Anti-Pattern 4: Over-Engineering
-- Building for hypothetical future requirements
-- Adding abstraction layers without clear benefit
-- Creating complex solutions for simple problems
+### The Changelog Without Links
+Bug fixes must link to the issue or PR. Users need to confirm their specific bug is fixed:
+```markdown
+# Bad
+Fixed a crash when importing CSV files with special characters.
+
+# Good
+Fixed a crash when importing CSV files with special characters. (#456)
+```
+
+### The Missing Migration Guide
+Any entry in "Breaking Changes" without a migration guide is incomplete. If you cannot write the migration steps, the feature is not ready to ship.
+
+### The Vague Security Notice
+```
+# Bad: too vague to act on
+Fixed a security vulnerability.
+
+# Good: enough to act on, not enough to exploit
+Fixed an authentication bypass in the API token validation (CVE-2024-12345).
+Upgrade to v2.1.1 immediately. All v2.0.x versions are affected.
+```
 
 ## References
-
-### Documentation
-- Official documentation for related tools and frameworks
-- Industry standards and specifications
-- Community best practices and guides
-
-### Learning Resources
-- Tutorials and walkthroughs for beginners
-- Advanced guides for experienced practitioners
-- Case studies and real-world examples
-
-### Tools
-- Development tools for release-notes
-- Testing and validation tools
-- Monitoring and observability tools
+- [Keep a Changelog](https://keepachangelog.com/)
+- [Conventional Commits](https://www.conventionalcommits.org/)
+- [GitHub: Release pages docs](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
+- [Stripe API Changelog](https://stripe.com/docs/upgrades) - example of excellent breaking change documentation
