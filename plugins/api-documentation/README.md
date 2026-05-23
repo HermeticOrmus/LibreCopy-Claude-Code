@@ -1,65 +1,33 @@
-# API Documentation Plugin
+# API Documentation
 
-> Author, validate, and publish API reference documentation. Covers OpenAPI 3.x/AsyncAPI specs, SDK docs, and code sample generation.
+> OpenAPI/AsyncAPI, examples that work, error codes that help, changelogs developers can scan. The patterns that turn an API into a usable API.
 
-## Purpose
+## Contents
+- **Agent**: `api-doc-writer` — technical writer specializing in API documentation
+- **Command**: `/api-docs` — structure design, example crafting, error catalog, changelog format
+- **Skill**: pattern library for OpenAPI, AsyncAPI, examples, errors, getting-started, changelogs
 
-Produces standards-compliant API documentation from code, route definitions, or scratch. Treats the OpenAPI spec as a living contract between frontend, backend, and SDK consumers. Integrates with Redoc, Swagger UI, Scalar, Stoplight Studio, and Spectral for linting.
+## Key capabilities
 
-## Agents
+- **Structure (Diátaxis-aware)**: Reference (precise), Tutorial (first experience), How-to (specific task), Explanation (concept)
+- **OpenAPI 3.1**: schemas, examples, links, callbacks, webhooks, security schemes
+- **AsyncAPI 3.0**: event-driven API documentation (Kafka, Pub/Sub, WebSocket)
+- **Examples that work**: copy-paste runnable, language-appropriate, with expected output
+- **Error codes**: structured, scannable, actionable error message catalogs
+- **Authentication walkthroughs**: OAuth2, API keys, mTLS — first-use friendly
+- **Changelog discipline**: what's customer-facing vs. internal, breaking-change communication
+- **Docs-as-code**: API docs from source; specs in version control; lint + test in CI
+- **SDK + code samples**: language-specific examples (TS, Python, Go, Java, curl)
 
-| Agent | Role |
-|-------|------|
-| `api-doc-specialist` | OpenAPI 3.x/AsyncAPI spec authoring, validation, Redoc/Scalar publishing, SDK documentation, code sample generation |
+## When to use
 
-## Commands
+- Designing API documentation from scratch
+- Migrating from hand-written to OpenAPI-generated
+- Adding a new public API endpoint (each new endpoint = doc update)
+- API documentation that "looks good but no one uses"
+- Pre-launch API documentation review
+- Internal API documentation for cross-team consumers
 
-| Command | Description |
-|---------|-------------|
-| `/doc-api generate` | Generate OpenAPI spec from source code, Postman collection, or skeleton |
-| `/doc-api validate` | Lint spec against OpenAPI rules + custom Spectral ruleset |
-| `/doc-api publish` | Build rendered HTML docs for deployment (Redoc or Scalar) |
-| `/doc-api diff` | Compare two spec versions, identify breaking vs non-breaking changes |
+## Compatibility
 
-## Skills
-
-| Skill | Description |
-|-------|-------------|
-| `openapi-patterns` | OpenAPI 3.1 spec structure, schema design, polymorphism, auth schemes, pagination |
-| `api-doc-patterns` | Operation documentation, response coverage, x-codeSamples, anti-patterns |
-
-## Quick Start
-
-```bash
-# Validate an existing spec
-/doc-api validate ./docs/openapi.yaml --format pretty
-
-# Generate spec skeleton for a new API
-/doc-api generate --skeleton --title "Payments API" --version 1.0.0
-
-# Build Redoc HTML docs
-/doc-api publish ./docs/openapi.yaml --renderer redoc --output ./dist/docs
-
-# Diff two versions before release
-/doc-api diff ./docs/openapi-v1.yaml ./docs/openapi-v2.yaml --format markdown
-```
-
-## When to Use
-
-- Spec-first API design before implementation begins
-- Retroactively documenting an existing undocumented API
-- Enforcing consistent documentation standards across a team
-- Generating SDK documentation for multiple client languages
-- Detecting breaking changes before a release
-- Setting up automated validation in CI (Spectral + Redocly CLI)
-
-## Tooling Reference
-
-| Tool | Purpose |
-|------|---------|
-| [Redocly CLI](https://redocly.com/docs/cli/) | Lint, bundle, and build docs from OpenAPI |
-| [Spectral](https://stoplight.io/open-source/spectral) | Custom linting rules for OpenAPI/AsyncAPI |
-| [Scalar](https://scalar.com/) | Modern API reference UI with try-it-out |
-| [Stoplight Studio](https://stoplight.io/studio) | GUI editor with git sync |
-| [OpenAPI Generator](https://openapi-generator.tech/) | SDK generation from specs |
-| [Schemathesis](https://schemathesis.readthedocs.io/) | Property-based API testing from specs |
+OpenAPI 3.1 + AsyncAPI 3.0. Tooling: Redocly, Stoplight, Mintlify, Scalar, Bump.sh. Self-hosted via Swagger UI, Redoc, Slate.
