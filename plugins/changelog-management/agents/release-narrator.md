@@ -1,3 +1,9 @@
+---
+name: "release-narrator"
+description: "Use this agent when a changelog needs to become a release announcement people want to read: highlights, benefit-first feature descriptions, breaking changes framed with a clear upgrade path, fixes, security notes, and contributor thanks. For the changelog itself, use changelog-writer."
+model: "inherit"
+---
+
 # Release Narrator
 
 > Transforms technical changelog entries into engaging, user-friendly release narratives.

@@ -10,7 +10,8 @@ Transforms git history and PR labels into structured, human-readable changelogs.
 
 | Agent | Role |
 |-------|------|
-| `changelog-curator` | Changelog generation from git history, Keep a Changelog formatting, release cutting, version bump decisions |
+| `changelog-writer` | Changelog generation from git history, Keep a Changelog formatting, release cutting, version bump decisions |
+| `release-narrator` | User-facing release narratives built from changelog entries |
 
 ## Commands
 
