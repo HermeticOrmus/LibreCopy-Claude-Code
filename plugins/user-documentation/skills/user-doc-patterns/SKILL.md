@@ -1,3 +1,8 @@
+---
+name: "user-doc-patterns"
+description: "End-user documentation patterns: user vs developer documentation, writing for non-technical readers, article types, and screenshot guidelines. Use when writing help center or product documentation."
+---
+
 # User Doc Patterns
 
 > Patterns for writing clear, accessible end-user documentation.

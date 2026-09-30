@@ -10,16 +10,17 @@ User documentation serves a different audience than developer documentation. Use
 
 | Agent | Role |
 |-------|------|
-| `user-doc-writer` | Walkthroughs, overviews, troubleshooting, FAQ articles |
+| `user-guide-writer` | Walkthroughs, overviews, troubleshooting articles |
+| `faq-builder` | FAQ articles from questions or support tickets |
 
 ## Commands
 
 | Command | Description |
 |---------|-------------|
-| `/doc-user write` | Generate a user-facing documentation article |
-| `/doc-user review` | Analyze an article for plain language and user experience |
-| `/doc-user audit` | Audit a help center for coverage gaps and staleness |
-| `/doc-user faq` | Generate FAQ article from questions or support tickets |
+| `/user-doc write` | Generate a user-facing documentation article |
+| `/user-doc review` | Analyze an article for plain language and user experience |
+| `/user-doc audit` | Audit a help center for coverage gaps and staleness |
+| `/user-doc faq` | Generate FAQ article from questions or support tickets |
 
 ## Skills
 
@@ -31,16 +32,16 @@ User documentation serves a different audience than developer documentation. Use
 
 ```bash
 # Write a walkthrough for a feature
-/doc-user write --feature "team management" --type walkthrough
+/user-doc write --feature "team management" --type walkthrough
 
 # Write a troubleshooting article
-/doc-user write --topic "Invoice shows wrong amount" --type troubleshooting
+/user-doc write --topic "Invoice shows wrong amount" --type troubleshooting
 
 # Write a FAQ for a billing section
-/doc-user faq --topic "billing" --questions "invoice,refund,upgrade,cancel"
+/user-doc faq --topic "billing" --questions "invoice,refund,upgrade,cancel"
 
 # Review existing docs for plain language
-/doc-user review docs/help/team-management.md --check-vocabulary --check-steps
+/user-doc review docs/help/team-management.md --check-vocabulary --check-steps
 ```
 
 ## Article Type Guide
