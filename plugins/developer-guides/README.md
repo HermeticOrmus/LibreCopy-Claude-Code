@@ -11,37 +11,38 @@ Creates developer-facing documentation that maps to user needs via the Diátaxis
 | Agent | Role |
 |-------|------|
 | `devguide-writer` | Getting started guides, tutorials, how-tos, integration docs, Diátaxis compliance review |
+| `integration-documenter` | Third-party integrations, webhooks, plugin architectures, extension points |
 
 ## Commands
 
 | Command | Description |
 |---------|-------------|
-| `/doc-guide create` | Generate a new guide from type and description |
-| `/doc-guide review` | Review for Diátaxis compliance and content type mixing |
-| `/doc-guide test` | Verify guide commands and links work |
-| `/doc-guide publish` | Build and publish to target platform |
+| `/devguide` | Write a getting started, contributing, integration, or development guide |
+| `/devguide create` | Generate a new guide from type and description |
+| `/devguide review` | Review for Diátaxis compliance and content type mixing |
+| `/devguide test` | Verify guide commands and links work |
+| `/devguide publish` | Build and publish to target platform |
 
 ## Skills
 
 | Skill | Description |
 |-------|-------------|
-| `developer-guide-patterns` | Developer journey mapping, getting started anatomy, contributing guide structure |
-| `devguide-patterns` | Diátaxis in practice, code example best practices, prerequisite tables, expected output |
+| `devguide-patterns` | Diátaxis in practice, code example best practices, prerequisite tables, expected output, plus developer journey mapping, getting started anatomy, and contributing guide structure |
 
 ## Quick Start
 
 ```bash
 # Create a getting started guide
-/doc-guide create --type getting-started --project "Python HTTP client"
+/devguide create --type getting-started --project "Python HTTP client"
 
 # Create a how-to guide
-/doc-guide create --type how-to --task "configure OAuth with GitHub"
+/devguide create --type how-to --task "configure OAuth with GitHub"
 
 # Review existing guide for type mixing
-/doc-guide review docs/getting-started.md --check-type-mixing
+/devguide review docs/getting-started.md --check-type-mixing
 
 # Test guide commands
-/doc-guide test docs/getting-started.md --validate-links
+/devguide test docs/getting-started.md --validate-links
 ```
 
 ## When to Use
