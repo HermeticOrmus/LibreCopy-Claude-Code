@@ -69,6 +69,23 @@ claude plugin install api-documentation@libre-copy
 
 Install as many plugins as you need, then restart Claude Code to load them. `/plugin` inside Claude Code opens the plugin manager, where you can browse the rest of the pack.
 
+### Install in Grok Build
+
+Grok Build reads the same plugin folders. Add the marketplace, then install any plugin by name:
+
+```bash
+grok plugin marketplace add HermeticOrmus/LibreCopy-Claude-Code
+grok plugin install api-documentation@libre-copy --trust
+```
+
+Or install one plugin straight from its folder, without adding the marketplace:
+
+```bash
+grok plugin install HermeticOrmus/LibreCopy-Claude-Code#plugins/api-documentation --trust
+```
+
+`--trust` confirms you trust the source; without it Grok shows what the plugin would activate and stops. Start a new Grok session to load what you installed. From a clone, `./setup.sh --grok` installs the whole pack through the `grok` CLI. The `libre-copy-hooks` plugin uses a hook format Grok supports, but it has not been verified in a live Grok session (see the [ledger](LEDGER.md)).
+
 ### Install from a clone
 
 ```bash
@@ -77,7 +94,7 @@ cd ~/projects/LibreCopy-Claude-Code
 ./setup.sh
 ```
 
-`./setup.sh` registers the clone as the `libre-copy` marketplace and installs all 21 plugins through the Claude Code CLI. `./setup.sh --list` shows them, `./setup.sh --only api-documentation,readme-engineering` installs a subset, and `./setup.sh --uninstall` removes them.
+`./setup.sh` registers the clone as the `libre-copy` marketplace and installs all 21 plugins through the Claude Code CLI. `./setup.sh --list` shows them, `./setup.sh --only api-documentation,readme-engineering` installs a subset, and `./setup.sh --uninstall` removes them. Add `--grok` to install through Grok Build instead; it works with `--list`, `--only`, and `--uninstall`, and needs `grok` and `jq`.
 
 ### Optional hooks
 
@@ -100,6 +117,8 @@ See [QUICK_START.md](QUICK_START.md). Learning paths: [beginner](learning-paths/
 ## Feedback
 
 Starred this? Tell us what worked and what is missing: [open a feedback issue](https://github.com/HermeticOrmus/LibreCopy-Claude-Code/issues/new?template=feedback.yml). Every piece of feedback gets an answer, and changes that come from it are credited in the release notes.
+
+Cracks we found and sealed: [LEDGER.md](LEDGER.md).
 
 ## Contribute
 
