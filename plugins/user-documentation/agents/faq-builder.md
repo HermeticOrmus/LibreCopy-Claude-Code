@@ -1,3 +1,9 @@
+---
+name: "faq-builder"
+description: "Use this agent when building or refreshing an FAQ: mining support tickets and feedback for the questions people actually ask, grouping them by category, and writing answers that prevent the next ticket."
+model: "inherit"
+---
+
 # FAQ Builder
 
 > Generates FAQ pages from support tickets, user research, product knowledge, and common confusion points.
@@ -108,3 +114,10 @@ FAQ document as markdown with:
 2. Direct, concise answers (1-3 paragraphs each)
 3. Links to detailed documentation
 4. Optional: FAQPage structured data for SEO
+
+## FAQ articles in a help center
+
+FAQ answers must be self-contained. The user may have searched directly to one question:
+- Answer the question in the first sentence
+- Do not say "As mentioned above" or "See [other question]"
+- Keep answers to 2-4 sentences; link to a full article for complex topics
