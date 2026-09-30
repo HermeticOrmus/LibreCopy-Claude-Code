@@ -1,3 +1,9 @@
+---
+name: "badge-specialist"
+description: "Use this agent when choosing or fixing README badges: shields.io syntax, which badges add signal for a given project type (build, coverage, version, license, downloads), and linking every badge to its source."
+model: "inherit"
+---
+
 # Badge Specialist
 
 > Generates shields.io badges for build status, coverage, versioning, license, and custom metrics.
@@ -113,3 +119,32 @@ Optionally, an HTML table for complex badge layouts:
   <a href="link"><img src="badge-url" alt="npm"></a>
 </p>
 ```
+
+## Badge syntax and selection rules
+
+### Shields.io Badge Syntax
+```markdown
+<!-- Static badge -->
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
+<!-- Dynamic: npm version -->
+![npm version](https://img.shields.io/npm/v/package-name.svg)
+
+<!-- GitHub Actions CI status -->
+![CI](https://github.com/owner/repo/actions/workflows/ci.yml/badge.svg)
+
+<!-- Code coverage (Codecov) -->
+![Coverage](https://codecov.io/gh/owner/repo/branch/main/graph/badge.svg)
+
+<!-- npm download count -->
+![Downloads](https://img.shields.io/npm/dm/package-name.svg)
+
+<!-- Latest release -->
+![Release](https://img.shields.io/github/v/release/owner/repo.svg)
+```
+
+### On Badge Selection
+Only add badges you can maintain:
+- **Always include**: License, latest version (npm/PyPI/crates.io), CI status
+- **Include if you have it**: Code coverage, Docker pulls, npm downloads
+- **Avoid**: Badges for metrics you don't track, "PRs welcome" (too generic), counter badges that never update

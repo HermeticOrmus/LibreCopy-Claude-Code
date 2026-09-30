@@ -12,38 +12,38 @@ Covers README generation for libraries, CLIs, services, and monorepos; badge sel
 
 | Agent | Role |
 |-------|------|
-| `readme-engineer` | README generation, badge configuration, validation, and quality audits |
+| `readme-architect` | README generation, structure by project type, validation, and quality audits |
+| `badge-specialist` | Shields.io badge selection and syntax |
 
 ## Commands
 
 | Command | Description |
 |---------|-------------|
-| `/build-readme generate` | Generate a complete README for the current project |
-| `/build-readme badges` | Generate Shields.io badge markdown for a project |
-| `/build-readme validate` | Check README against Standard README spec and best practices |
-| `/build-readme preview` | Show what the README looks like rendered |
+| `/readme generate` | Generate a complete README for the current project |
+| `/readme badges` | Generate Shields.io badge markdown for a project |
+| `/readme validate` | Check README against Standard README spec and best practices |
+| `/readme preview` | Show what the README looks like rendered |
 
 ## Skills
 
 | Skill | Description |
 |-------|-------------|
-| `readme-patterns` | 5-second test, README pyramid, badge selection, copy-paste test, anti-patterns |
-| `readme-templates` | Complete README templates for library, CLI, service, and monorepo project types |
+| `readme-patterns` | 5-second test, README pyramid, badge selection, copy-paste test, anti-patterns, and README templates by project type |
 
 ## Quick Start
 
 ```bash
 # Generate a README for a TypeScript library
-/build-readme generate --type library --pkg-manager npm,yarn,pnpm
+/readme generate --type library --pkg-manager npm,yarn,pnpm
 
 # Add badges to an existing README
-/build-readme badges --ci github-actions --coverage codecov --registry npm --pkg my-package
+/readme badges --ci github-actions --coverage codecov --registry npm --pkg my-package
 
 # Validate your README against the Standard README spec
-/build-readme validate README.md --spec standard-readme --check-links
+/readme validate README.md --spec standard-readme --check-links
 
 # Audit README quality
-/build-readme validate README.md --check-badges --verbose
+/readme validate README.md --check-badges --verbose
 ```
 
 ## README Quality Checklist
