@@ -1,3 +1,8 @@
+---
+description: "Create a runbook for an alert or service, check one for completeness, generate a tabletop exercise to test it, or audit a runbook directory for freshness and gaps."
+argument-hint: "[create|validate|test|audit] [--alert name|--service name]"
+---
+
 # /write-runbook
 
 Create, validate, and test operational runbooks and incident response procedures.

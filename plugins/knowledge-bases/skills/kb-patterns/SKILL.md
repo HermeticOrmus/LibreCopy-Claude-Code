@@ -1,3 +1,8 @@
+---
+name: "kb-patterns"
+description: "Knowledge base patterns: article title patterns, taxonomy design, article lifecycle, search performance analysis, article structure, feedback and metrics, and anti-patterns. Use when designing or maintaining a help center or internal wiki."
+---
+
 # Knowledge Base Patterns
 
 ## Article Title Patterns

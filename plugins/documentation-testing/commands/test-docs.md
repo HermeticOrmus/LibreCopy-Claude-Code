@@ -1,3 +1,8 @@
+---
+description: "Check documentation links, validate code examples, enforce style rules, or detect stale content."
+argument-hint: "[links|examples|style|freshness] [--changed-only] [--config path]"
+---
+
 # /test-docs
 
 Check links, validate code examples, enforce style rules, and detect stale content.

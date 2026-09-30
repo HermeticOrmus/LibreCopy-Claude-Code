@@ -1,3 +1,8 @@
+---
+description: "Create a quickstart, getting-started guide, or onboarding checklist, review an existing guide for completeness and testability, set up time-to-first-success measurement, or update steps for a new version."
+argument-hint: "[create|test|measure|update] [--type quickstart|getting-started|checklist]"
+---
+
 # /doc-onboarding
 
 Create, test, measure, and update onboarding documentation optimized for time-to-first-success.

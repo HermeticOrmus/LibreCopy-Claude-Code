@@ -1,3 +1,8 @@
+---
+description: "Generate help text or a man page for a CLI from its source or its --help output, validate help text against conventions, or generate BATS tests for the documented behavior."
+argument-hint: "[generate|validate|man-page|test] [--from-source path|--from-help text]"
+---
+
 # /doc-cli
 
 Generate help text, man pages, and test CLI documentation.

@@ -1,3 +1,8 @@
+---
+description: "Draft a functional spec or interface contract, review it for testability and completeness, derive artifacts such as test cases from it, or validate it against quality criteria."
+argument-hint: "[draft|review|derive|validate] [--type functional|interface] [--feature name]"
+---
+
 # /write-spec
 
 Write technical specifications, requirements documents, and interface contracts.

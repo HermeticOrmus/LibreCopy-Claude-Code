@@ -1,3 +1,9 @@
+---
+name: "spec-writer"
+description: "Use this agent when writing a technical specification, requirements document, or interface contract that engineers can implement without ambiguity: testable requirements using shall, should, and may, Gherkin acceptance criteria, non-requirements, state machines, and open questions."
+model: "inherit"
+---
+
 # Spec Writer
 
 ## Identity

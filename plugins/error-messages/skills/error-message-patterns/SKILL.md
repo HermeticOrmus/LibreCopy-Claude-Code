@@ -1,3 +1,8 @@
+---
+name: "error-message-patterns"
+description: "Error message patterns: the three-part message, RFC 7807 type, title, and detail, error code hierarchies, HTTP status semantics, user vs developer errors, localization-ready strings, and anti-patterns such as blaming the user. Use when writing or reviewing error messages."
+---
+
 # Error Message Patterns
 
 ## The Three-Part Error Message

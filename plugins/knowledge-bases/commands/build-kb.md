@@ -1,3 +1,8 @@
+---
+description: "Design a knowledge base structure, plan a content migration between platforms, optimize search, or build a measurement plan for knowledge base health."
+argument-hint: "[structure|migrate|optimize|measure] [--platform name]"
+---
+
 # /build-kb
 
 Design knowledge base structure, migrate content, optimize search, and measure performance.

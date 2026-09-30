@@ -1,3 +1,8 @@
+---
+name: "content-strategy-patterns"
+description: "Documentation strategy patterns: the Diátaxis classification test, ROT analysis and staleness signals, single-source publishing, navigation depth and breadth, content versioning, documentation metrics, and anti-patterns. Use when planning or auditing a documentation set."
+---
+
 # Content Strategy Patterns
 
 ## Diátaxis Framework
