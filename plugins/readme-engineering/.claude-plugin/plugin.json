@@ -1,0 +1,19 @@
+{
+  "name": "readme-engineering",
+  "version": "1.0.0",
+  "description": "READMEs: structure by project type, the 5-second test, copy-paste quick starts, badges, and validation.",
+  "author": {
+    "name": "Diego Bodart",
+    "url": "https://github.com/HermeticOrmus"
+  },
+  "homepage": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "repository": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "readme",
+    "badges",
+    "shields-io",
+    "open-source"
+  ]
+}

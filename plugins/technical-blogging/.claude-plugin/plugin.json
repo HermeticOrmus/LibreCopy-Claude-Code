@@ -1,0 +1,19 @@
+{
+  "name": "technical-blogging",
+  "version": "1.0.0",
+  "description": "Technical blogging: developer-focused posts, headlines, code examples, platform formats, and search optimization.",
+  "author": {
+    "name": "Diego Bodart",
+    "url": "https://github.com/HermeticOrmus"
+  },
+  "homepage": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "repository": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "blogging",
+    "technical-writing",
+    "seo",
+    "developer-content"
+  ]
+}

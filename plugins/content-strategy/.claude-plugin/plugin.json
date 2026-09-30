@@ -1,0 +1,19 @@
+{
+  "name": "content-strategy",
+  "version": "1.0.0",
+  "description": "Documentation strategy: content audits, Diátaxis classification, information architecture, roadmaps, and docs metrics.",
+  "author": {
+    "name": "Diego Bodart",
+    "url": "https://github.com/HermeticOrmus"
+  },
+  "homepage": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "repository": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "content-strategy",
+    "information-architecture",
+    "diataxis",
+    "content-audit"
+  ]
+}

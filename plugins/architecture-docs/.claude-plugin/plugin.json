@@ -1,0 +1,20 @@
+{
+  "name": "architecture-docs",
+  "version": "1.0.0",
+  "description": "Architecture documentation: Architecture Decision Records, C4 diagrams, arc42 sections, and data-flow narratives.",
+  "author": {
+    "name": "Diego Bodart",
+    "url": "https://github.com/HermeticOrmus"
+  },
+  "homepage": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "repository": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "architecture",
+    "adr",
+    "c4-model",
+    "arc42",
+    "mermaid"
+  ]
+}

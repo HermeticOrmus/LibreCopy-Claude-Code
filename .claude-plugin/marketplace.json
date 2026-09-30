@@ -1,0 +1,133 @@
+{
+  "name": "libre-copy",
+  "owner": {
+    "name": "Diego Bodart",
+    "url": "https://github.com/HermeticOrmus"
+  },
+  "metadata": {
+    "description": "Technical writing and documentation engineering plugins for Claude Code: API docs, READMEs, changelogs, release notes, tutorials, runbooks, specs, style guides, and more.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "api-documentation",
+      "source": "./plugins/api-documentation",
+      "description": "API documentation: docs-site architecture, OpenAPI reference generation and linting, operation-level writing, error catalogs, and SDK guides.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "architecture-docs",
+      "source": "./plugins/architecture-docs",
+      "description": "Architecture documentation: Architecture Decision Records, C4 diagrams, arc42 sections, and data-flow narratives.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "changelog-management",
+      "source": "./plugins/changelog-management",
+      "description": "Changelogs: Keep a Changelog entries from git history, SemVer bumps, release cutover, automation tools, and user-facing release narratives.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "cli-help-text",
+      "source": "./plugins/cli-help-text",
+      "description": "CLI documentation: --help output, usage lines, options, subcommands, man pages, and exit codes by POSIX and GNU conventions.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "code-comments",
+      "source": "./plugins/code-comments",
+      "description": "Code comments: inline comments that explain why, and documentation comments (JSDoc, TSDoc, docstrings, rustdoc, godoc) with coverage checks.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "content-strategy",
+      "source": "./plugins/content-strategy",
+      "description": "Documentation strategy: content audits, Diátaxis classification, information architecture, roadmaps, and docs metrics.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "developer-guides",
+      "source": "./plugins/developer-guides",
+      "description": "Developer guides: getting started, CONTRIBUTING.md, environment setup, Diátaxis tutorials and how-tos, and integration docs.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "documentation-testing",
+      "source": "./plugins/documentation-testing",
+      "description": "Documentation testing: link checks, runnable code examples, Vale and markdownlint style checks, and freshness detection in CI.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "error-messages",
+      "source": "./plugins/error-messages",
+      "description": "Error messages: three-part messages, RFC 7807 Problem Details, error code catalogs, and localization-ready strings.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "knowledge-bases",
+      "source": "./plugins/knowledge-bases",
+      "description": "Knowledge bases: taxonomy, article templates, search findability, lifecycle, and metrics across common platforms.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "onboarding-docs",
+      "source": "./plugins/onboarding-docs",
+      "description": "Onboarding docs: quickstarts built for time to first success, prerequisites, expected output, and progressive disclosure.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "proposal-writing",
+      "source": "./plugins/proposal-writing",
+      "description": "Technical proposals: RFCs, design documents, and PRDs with problem-first structure, real alternatives, and success metrics.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "readme-engineering",
+      "source": "./plugins/readme-engineering",
+      "description": "READMEs: structure by project type, the 5-second test, copy-paste quick starts, badges, and validation.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "release-notes",
+      "source": "./plugins/release-notes",
+      "description": "Release notes: audience-segmented notes, breaking changes with migration snippets, migration guides, and channel formats.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "runbook-writing",
+      "source": "./plugins/runbook-writing",
+      "description": "Runbooks: incident response procedures and SOPs that work at 3am, with exact commands, verification, and escalation.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "specification-writing",
+      "source": "./plugins/specification-writing",
+      "description": "Specifications: testable requirements, Gherkin acceptance criteria, interface contracts, and state machines.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "style-guides",
+      "source": "./plugins/style-guides",
+      "description": "Style guides: voice and tone, language and formatting rules, terminology glossaries, inclusive language, and Vale enforcement.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "technical-blogging",
+      "source": "./plugins/technical-blogging",
+      "description": "Technical blogging: developer-focused posts, headlines, code examples, platform formats, and search optimization.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "tutorial-creation",
+      "source": "./plugins/tutorial-creation",
+      "description": "Tutorials: learning path design, atomic steps with expected output, checkpoints, and honest prerequisites.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "user-documentation",
+      "source": "./plugins/user-documentation",
+      "description": "User documentation: task-oriented guides and help center articles for non-technical readers, troubleshooting, and FAQs.",
+      "version": "1.0.0"
+    }
+  ]
+}

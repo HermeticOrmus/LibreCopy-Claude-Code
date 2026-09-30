@@ -1,0 +1,19 @@
+{
+  "name": "code-comments",
+  "version": "1.0.0",
+  "description": "Code comments: inline comments that explain why, and documentation comments (JSDoc, TSDoc, docstrings, rustdoc, godoc) with coverage checks.",
+  "author": {
+    "name": "Diego Bodart",
+    "url": "https://github.com/HermeticOrmus"
+  },
+  "homepage": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "repository": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "code-comments",
+    "docstrings",
+    "jsdoc",
+    "rustdoc"
+  ]
+}

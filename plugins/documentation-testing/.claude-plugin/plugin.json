@@ -1,0 +1,20 @@
+{
+  "name": "documentation-testing",
+  "version": "1.0.0",
+  "description": "Documentation testing: link checks, runnable code examples, Vale and markdownlint style checks, and freshness detection in CI.",
+  "author": {
+    "name": "Diego Bodart",
+    "url": "https://github.com/HermeticOrmus"
+  },
+  "homepage": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "repository": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "docs-testing",
+    "vale",
+    "link-checking",
+    "doctest",
+    "ci"
+  ]
+}

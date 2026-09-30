@@ -1,0 +1,19 @@
+{
+  "name": "user-documentation",
+  "version": "1.0.0",
+  "description": "User documentation: task-oriented guides and help center articles for non-technical readers, troubleshooting, and FAQs.",
+  "author": {
+    "name": "Diego Bodart",
+    "url": "https://github.com/HermeticOrmus"
+  },
+  "homepage": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "repository": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "user-docs",
+    "help-center",
+    "faq",
+    "ux-writing"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "specification-writing",
+  "version": "1.0.0",
+  "description": "Specifications: testable requirements, Gherkin acceptance criteria, interface contracts, and state machines.",
+  "author": {
+    "name": "Diego Bodart",
+    "url": "https://github.com/HermeticOrmus"
+  },
+  "homepage": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "repository": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "specifications",
+    "requirements",
+    "gherkin",
+    "interface-contracts"
+  ]
+}

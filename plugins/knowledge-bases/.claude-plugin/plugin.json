@@ -1,0 +1,19 @@
+{
+  "name": "knowledge-bases",
+  "version": "1.0.0",
+  "description": "Knowledge bases: taxonomy, article templates, search findability, lifecycle, and metrics across common platforms.",
+  "author": {
+    "name": "Diego Bodart",
+    "url": "https://github.com/HermeticOrmus"
+  },
+  "homepage": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "repository": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "knowledge-base",
+    "help-center",
+    "taxonomy",
+    "search"
+  ]
+}

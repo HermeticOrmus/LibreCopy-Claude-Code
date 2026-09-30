@@ -1,0 +1,19 @@
+{
+  "name": "cli-help-text",
+  "version": "1.0.0",
+  "description": "CLI documentation: --help output, usage lines, options, subcommands, man pages, and exit codes by POSIX and GNU conventions.",
+  "author": {
+    "name": "Diego Bodart",
+    "url": "https://github.com/HermeticOrmus"
+  },
+  "homepage": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "repository": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "cli",
+    "help-text",
+    "man-pages",
+    "posix"
+  ]
+}

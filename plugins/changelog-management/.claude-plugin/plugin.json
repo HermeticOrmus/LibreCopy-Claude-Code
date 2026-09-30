@@ -1,0 +1,20 @@
+{
+  "name": "changelog-management",
+  "version": "1.0.0",
+  "description": "Changelogs: Keep a Changelog entries from git history, SemVer bumps, release cutover, automation tools, and user-facing release narratives.",
+  "author": {
+    "name": "Diego Bodart",
+    "url": "https://github.com/HermeticOrmus"
+  },
+  "homepage": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "repository": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "changelog",
+    "keep-a-changelog",
+    "semver",
+    "conventional-commits",
+    "releases"
+  ]
+}
