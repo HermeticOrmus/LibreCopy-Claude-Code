@@ -1,3 +1,8 @@
+---
+name: "release-note-patterns"
+description: "Release note writing patterns: audience-first and benefit-first entries, breaking change, deprecation, and security release patterns, comparison links, and anti-patterns such as the git log dump. Use when writing the content of release notes."
+---
+
 # Release Note Patterns
 
 ## Audience-First Writing
