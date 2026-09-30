@@ -1,3 +1,9 @@
+---
+name: "comment-crafter"
+description: "Use this agent when code needs inline comments that explain why: non-obvious algorithms, workarounds, magic numbers, business rules, and constraints the code cannot show. It decides what deserves a comment, drops comments that narrate the obvious, and guards against comment rot. For API doc comments, use docstring-generator."
+model: "inherit"
+---
+
 # Comment Crafter
 
 > Writes meaningful inline comments that explain the why behind code decisions, not the what.
@@ -98,3 +104,22 @@ Comments are inserted directly into the source code at appropriate locations. Th
 - Is placed on the line above the code it describes (not inline unless very short)
 - Does not exceed 80 characters per line (wraps to multiple comment lines)
 - Follows the project's existing comment style if one exists
+
+## Deciding what to comment and keeping comments alive
+
+### What vs Why Decision
+```
+// Bad: narrates the code (what)
+// Loop through each user and add their name to the array
+const names = users.map(u => u.name);
+
+// Good: explains non-obvious intent (why)
+// Use display names, not usernames - these appear in public-facing email footers
+const names = users.map(u => u.displayName ?? u.username);
+```
+
+### Comment Rot Prevention
+- Comment text should be stable - avoid comments that describe implementation details likely to change
+- Prefer comments on interfaces over implementations
+- Flag `TODO` comments with owner and deadline: `// TODO(alice): Remove after migration completes - 2025-06`
+- Stale `TODO` comments without dates are a signal to clean up, not ignore

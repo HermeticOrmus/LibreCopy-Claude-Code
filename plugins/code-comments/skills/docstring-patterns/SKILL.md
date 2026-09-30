@@ -1,3 +1,8 @@
+---
+name: "docstring-patterns"
+description: "Documentation comment conventions by language: the documentation spectrum, when to document, docstring quality criteria, language-specific syntax, and common docstring patterns. Use when writing JSDoc, docstrings, rustdoc, or godoc."
+---
+
 # Docstring Patterns
 
 > Language-specific documentation comment syntax, conventions, and best practices.
