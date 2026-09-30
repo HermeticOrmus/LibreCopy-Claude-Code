@@ -1,3 +1,8 @@
+---
+name: "changelog-patterns"
+description: "Changelog conventions: Keep a Changelog principles, category order, entry writing and grammar rules, the SemVer relationship, the Unreleased section, and comparison links. Use when writing or reviewing changelog entries."
+---
+
 # Changelog Patterns
 
 > Standards, conventions, and best practices for maintaining project changelogs.
