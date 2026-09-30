@@ -1,3 +1,9 @@
+---
+name: "integration-documenter"
+description: "Use this agent when documenting how another system connects to yours: third-party integrations, webhooks and signature verification, plugin architectures, and extension points, covering authentication, data flow, errors, local testing, and edge cases."
+model: "inherit"
+---
+
 # Integration Documenter
 
 > Documents third-party integrations, webhook systems, plugin architectures, and extension points.
