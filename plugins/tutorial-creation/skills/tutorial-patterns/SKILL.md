@@ -1,3 +1,8 @@
+---
+name: "tutorial-patterns"
+description: "Tutorial writing patterns: tutorial vs how-to, the working state principle, atomic steps, expected output, checkpoints, honest prerequisites, destination first, and anti-patterns such as the magic step. Use when writing or reviewing tutorial steps."
+---
+
 # Tutorial Patterns
 
 ## Tutorial vs. How-to Guide: The Critical Distinction
