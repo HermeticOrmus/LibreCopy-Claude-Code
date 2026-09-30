@@ -75,7 +75,7 @@ Grok Build reads the same plugin folders. Add the marketplace, then install any 
 
 ```bash
 grok plugin marketplace add HermeticOrmus/LibreCopy-Claude-Code
-grok plugin install api-documentation@libre-copy --trust
+grok plugin install api-documentation@LibreCopy-Claude-Code --trust
 ```
 
 Or install one plugin straight from its folder, without adding the marketplace:
