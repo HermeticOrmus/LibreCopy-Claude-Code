@@ -101,6 +101,13 @@ See [QUICK_START.md](QUICK_START.md). Learning paths: [beginner](learning-paths/
 
 Starred this? Tell us what worked and what is missing: [open a feedback issue](https://github.com/HermeticOrmus/LibreCopy-Claude-Code/issues/new?template=feedback.yml). Every piece of feedback gets an answer, and changes that come from it are credited in the release notes.
 
+## Contribute
+
+- Pick up work from the [Menu](pantry/MENU.md): every item has a Done-when anyone can check, and one is marked up next.
+- New here? Start with the [good first issues](https://github.com/HermeticOrmus/LibreCopy-Claude-Code/contribute).
+- Use the forms: [feedback](https://github.com/HermeticOrmus/LibreCopy-Claude-Code/issues/new?template=feedback.yml), [routing miss](https://github.com/HermeticOrmus/LibreCopy-Claude-Code/issues/new?template=routing-miss.yml) when Claude picks the wrong agent or skill, and [plugin proposal](https://github.com/HermeticOrmus/LibreCopy-Claude-Code/issues/new?template=plugin-proposal.yml) for something new.
+- Discussions are not switched on. [CONTRIBUTING.md](CONTRIBUTING.md#ways-to-contribute) says where to share what you built and how to test a change locally.
+
 ## Contributing
 
 PRs are welcome for plugin depth, real shipped-docs case studies, and style-guide examples. See [CONTRIBUTING.md](CONTRIBUTING.md).
