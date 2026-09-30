@@ -1,3 +1,8 @@
+---
+name: "proposal-patterns"
+description: "Proposal patterns: problem-first structure, the quality bar for alternatives, success metrics, the one-pager format, open questions, the review process, and anti-patterns such as consensus theater. Use when writing or reviewing RFCs and design docs."
+---
+
 # Proposal Writing Patterns
 
 ## Problem-First Structure

@@ -1,3 +1,8 @@
+---
+description: "Draft an RFC, technical design document, or one-pager, review a proposal, record the decision when it is finalized, or list proposals with their status."
+argument-hint: "[draft|review|finalize|track] [--type rfc|tdd|one-pager]"
+---
+
 # /write-proposal
 
 Draft, review, finalize, and track technical proposals and RFCs.

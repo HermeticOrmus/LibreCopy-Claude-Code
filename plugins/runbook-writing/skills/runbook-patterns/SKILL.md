@@ -1,3 +1,8 @@
+---
+name: "runbook-patterns"
+description: "Runbook patterns: the 3AM test, symptom-cause-remedy structure, command documentation, ordered causes, verification after remediation, escalation gates, SLA awareness, a postmortem template, and anti-patterns. Use when writing or reviewing runbooks."
+---
+
 # Runbook Patterns
 
 ## The 3AM Test

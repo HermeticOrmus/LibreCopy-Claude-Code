@@ -1,3 +1,8 @@
+---
+description: "Build an error catalog, generate error documentation, test error responses against RFC 7807 and team conventions, or extract error strings for localization."
+argument-hint: "[catalog|generate|test|localize] [--from-source path]"
+---
+
 # /doc-errors
 
 Build and maintain an error catalog, generate error documentation, and audit existing error messages.

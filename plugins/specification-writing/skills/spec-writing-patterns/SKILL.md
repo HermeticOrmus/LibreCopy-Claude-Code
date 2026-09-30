@@ -1,3 +1,8 @@
+---
+name: "spec-writing-patterns"
+description: "Specification patterns: the testability test, shall, should, and may, Gherkin acceptance criteria, interface contracts, non-requirements, open questions, state machine documentation, and anti-patterns such as the omnibus requirement. Use when writing or reviewing specs."
+---
+
 # Spec Writing Patterns
 
 ## The Testability Test

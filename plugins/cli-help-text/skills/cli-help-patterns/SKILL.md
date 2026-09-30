@@ -1,3 +1,8 @@
+---
+name: "cli-help-patterns"
+description: "CLI help conventions: POSIX usage lines, GNU long and short option naming, alignment, documenting defaults and required options, examples, environment variables, exit codes, subcommand help, and anti-patterns. Use when writing --help output or man pages."
+---
+
 # CLI Help Text Patterns
 
 ## POSIX Usage Line Conventions

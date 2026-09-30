@@ -1,3 +1,8 @@
+---
+name: "onboarding-patterns"
+description: "Onboarding documentation patterns: time-to-first-success benchmarks and measurement, the quickstart principle, expected output at every step, prerequisites tables, copy-paste safety, progressive disclosure, and anti-patterns. Use when writing or reviewing onboarding docs."
+---
+
 # Onboarding Documentation Patterns
 
 ## Time-to-First-Success Optimization

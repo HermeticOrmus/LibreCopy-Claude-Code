@@ -1,3 +1,8 @@
+---
+name: "doc-testing-patterns"
+description: "Documentation testing patterns: the testing pyramid, Python doctest, Vale configuration and custom rules, link checker tuning, code example freshness, markdownlint rules, automated freshness detection, and anti-patterns. Use when setting up docs checks in CI."
+---
+
 # Documentation Testing Patterns
 
 ## The Documentation Testing Pyramid

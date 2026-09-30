@@ -1,3 +1,8 @@
+---
+description: "Audit existing documentation, design its information architecture, build a prioritized content roadmap, or set up a measurement plan for docs health."
+argument-hint: "[audit|structure|roadmap|measure] [--dir path|--url url]"
+---
+
 # /content-plan
 
 Audit documentation, design information architecture, create content roadmaps, and measure docs performance.
