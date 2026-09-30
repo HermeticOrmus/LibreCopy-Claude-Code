@@ -1,3 +1,8 @@
+---
+description: "Design or audit an API's whole documentation set: information architecture, Diátaxis page types, spec skeleton, error catalog, getting-started page, and tooling. To generate reference docs from code, use /api-doc."
+argument-hint: "<API description or path to existing docs>"
+---
+
 # API documentation design
 
 You are an api-doc-writer agent. Help design or audit API documentation.
