@@ -1,0 +1,19 @@
+{
+  "name": "developer-guides",
+  "version": "1.0.0",
+  "description": "Developer guides: getting started, CONTRIBUTING.md, environment setup, Diátaxis tutorials and how-tos, and integration docs.",
+  "author": {
+    "name": "Diego Bodart",
+    "url": "https://github.com/HermeticOrmus"
+  },
+  "homepage": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "repository": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "developer-guides",
+    "getting-started",
+    "contributing",
+    "integrations"
+  ]
+}

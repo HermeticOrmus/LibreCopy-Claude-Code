@@ -1,0 +1,19 @@
+{
+  "name": "proposal-writing",
+  "version": "1.0.0",
+  "description": "Technical proposals: RFCs, design documents, and PRDs with problem-first structure, real alternatives, and success metrics.",
+  "author": {
+    "name": "Diego Bodart",
+    "url": "https://github.com/HermeticOrmus"
+  },
+  "homepage": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "repository": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "rfc",
+    "design-docs",
+    "proposals",
+    "prd"
+  ]
+}

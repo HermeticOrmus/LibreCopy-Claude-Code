@@ -1,0 +1,19 @@
+{
+  "name": "release-notes",
+  "version": "1.0.0",
+  "description": "Release notes: audience-segmented notes, breaking changes with migration snippets, migration guides, and channel formats.",
+  "author": {
+    "name": "Diego Bodart",
+    "url": "https://github.com/HermeticOrmus"
+  },
+  "homepage": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "repository": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "release-notes",
+    "migration-guides",
+    "breaking-changes",
+    "releases"
+  ]
+}

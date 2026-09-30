@@ -1,0 +1,19 @@
+{
+  "name": "error-messages",
+  "version": "1.0.0",
+  "description": "Error messages: three-part messages, RFC 7807 Problem Details, error code catalogs, and localization-ready strings.",
+  "author": {
+    "name": "Diego Bodart",
+    "url": "https://github.com/HermeticOrmus"
+  },
+  "homepage": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "repository": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "error-messages",
+    "rfc-7807",
+    "ux-writing",
+    "localization"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "runbook-writing",
+  "version": "1.0.0",
+  "description": "Runbooks: incident response procedures and SOPs that work at 3am, with exact commands, verification, and escalation.",
+  "author": {
+    "name": "Diego Bodart",
+    "url": "https://github.com/HermeticOrmus"
+  },
+  "homepage": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "repository": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "runbooks",
+    "incident-response",
+    "sre",
+    "operations"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "api-documentation",
+  "version": "1.0.0",
+  "description": "API documentation: docs-site architecture, OpenAPI reference generation and linting, operation-level writing, error catalogs, and SDK guides.",
+  "author": {
+    "name": "Diego Bodart",
+    "url": "https://github.com/HermeticOrmus"
+  },
+  "homepage": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "repository": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "api-docs",
+    "openapi",
+    "diataxis",
+    "sdk-docs",
+    "technical-writing"
+  ]
+}

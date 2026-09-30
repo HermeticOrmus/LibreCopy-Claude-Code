@@ -1,0 +1,19 @@
+{
+  "name": "style-guides",
+  "version": "1.0.0",
+  "description": "Style guides: voice and tone, language and formatting rules, terminology glossaries, inclusive language, and Vale enforcement.",
+  "author": {
+    "name": "Diego Bodart",
+    "url": "https://github.com/HermeticOrmus"
+  },
+  "homepage": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "repository": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "style-guide",
+    "terminology",
+    "vale",
+    "voice-and-tone"
+  ]
+}
