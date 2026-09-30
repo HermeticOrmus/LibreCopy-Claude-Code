@@ -1,0 +1,20 @@
+{
+  "name": "libre-copy-hooks",
+  "version": "1.0.0",
+  "description": "Optional LibreCopy hooks: a documentation tooling summary at session start, a confirmation prompt before Claude touches secrets files or runs commands that destroy docs or history, and post-edit checks for empty writes, doc linters, and matching tests.",
+  "author": {
+    "name": "Diego Bodart",
+    "url": "https://github.com/HermeticOrmus"
+  },
+  "homepage": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "repository": "https://github.com/HermeticOrmus/LibreCopy-Claude-Code",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "hooks",
+    "vale",
+    "markdownlint",
+    "secrets",
+    "safety"
+  ]
+}

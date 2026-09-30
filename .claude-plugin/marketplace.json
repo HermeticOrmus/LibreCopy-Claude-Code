@@ -128,6 +128,12 @@
       "source": "./plugins/user-documentation",
       "description": "User documentation: task-oriented guides and help center articles for non-technical readers, troubleshooting, and FAQs.",
       "version": "1.0.0"
+    },
+    {
+      "name": "libre-copy-hooks",
+      "source": "./plugins/libre-copy-hooks",
+      "description": "Optional LibreCopy hooks: a documentation tooling summary at session start, a confirmation prompt before Claude touches secrets files or runs commands that destroy docs or history, and post-edit checks for empty writes, doc linters, and matching tests.",
+      "version": "1.0.0"
     }
   ]
 }
