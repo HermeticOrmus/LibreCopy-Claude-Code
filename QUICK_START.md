@@ -15,6 +15,21 @@ cd ~/projects/LibreCopy-Claude-Code
 ./setup.sh
 ```
 
+### Install in Grok Build
+
+Grok Build reads the same plugin folders. Add the marketplace and install a plugin, or install one plugin straight from its folder:
+
+```bash
+grok plugin marketplace add HermeticOrmus/LibreCopy-Claude-Code
+grok plugin install api-documentation@libre-copy --trust
+# or, without the marketplace:
+grok plugin install HermeticOrmus/LibreCopy-Claude-Code#plugins/api-documentation --trust
+```
+
+From a clone, `./setup.sh --grok` installs every plugin through the `grok` CLI. Start a new Grok session to load them. The `libre-copy-hooks` plugin uses a hook format Grok supports, but it has not been verified in a live Grok session.
+
+### First prompt
+
 Restart Claude Code, then try:
 
 ```
