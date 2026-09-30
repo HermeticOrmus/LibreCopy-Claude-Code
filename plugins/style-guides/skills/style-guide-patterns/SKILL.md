@@ -1,3 +1,8 @@
+---
+name: "style-guide-patterns"
+description: "Style rule patterns: the 10-rule principle, do and don't pairs, terminology governance, voice and tone documentation, specific inclusive language rules, reading level enforcement, and anti-patterns. Use when writing the rules of a style guide."
+---
+
 # Style Guide Patterns
 
 ## The 10-Rule Principle
