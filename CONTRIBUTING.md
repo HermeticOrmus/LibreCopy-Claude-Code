@@ -35,7 +35,7 @@ The docs are in English only. Translations of the README, [QUICK_START.md](QUICK
 
 ### Share what you built
 
-Discussions are not switched on for this repository. Once they are, the Show and tell category is the place for docs you shipped with the pack. Until then, tell us through a [feedback issue](https://github.com/HermeticOrmus/LibreCopy-Claude-Code/issues/new?template=feedback.yml).
+Share docs you shipped with the pack in [Discussions, Show and tell](https://github.com/HermeticOrmus/LibreCopy-Claude-Code/discussions/categories/show-and-tell). Questions go in [Q&A](https://github.com/HermeticOrmus/LibreCopy-Claude-Code/discussions/categories/q-a).
 
 ### Test your change locally
 
