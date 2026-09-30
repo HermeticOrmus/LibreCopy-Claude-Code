@@ -24,38 +24,66 @@ Twenty plugins covering API docs, READMEs, runbooks, technical blogs, internal p
 
 ## The 20 plugins
 
-| Plugin | Domain |
-|---|---|
-| **api-documentation** ⭐ | OpenAPI/AsyncAPI, examples, error codes, change logs |
-| readme-engineering | The structure that makes READMEs useful (Diátaxis-aware) |
-| developer-guides | Tutorials, how-tos, deep dives |
-| tutorial-creation | Pedagogy + sequencing for newcomer onboarding |
-| user-documentation | End-user docs, screenshots, video integration |
-| architecture-docs | ADRs, system diagrams, technology choices |
-| onboarding-docs | First-day, first-week, first-quarter onboarding |
-| runbook-writing | Incident response runbooks, scheduled-action playbooks |
-| changelog-management | What's worth a changelog entry, semver discipline |
-| release-notes | Customer-facing changelog formatting |
-| error-messages | UX writing for error states (actionable, not blame-y) |
-| cli-help-text | Inline help, examples, man-page generation |
-| code-comments | When to comment, what to comment, anti-patterns |
-| content-strategy | Information architecture, governance, lifecycle |
-| documentation-testing | Doctest-style verification; broken-link detection |
-| knowledge-bases | Internal wikis, FAQ, search-first design |
-| proposal-writing | RFC structure, decision-doc patterns |
-| specification-writing | Technical specs, requirements, acceptance criteria |
-| style-guides | Writing style, vocabulary, voice + tone |
-| technical-blogging | Engineering blogs, distribution, post-mortems |
+| Plugin | Domain | Commands |
+|---|---|---|
+| **api-documentation** ⭐ | OpenAPI/AsyncAPI, examples, error codes, change logs | `/api-doc` `/api-docs` |
+| readme-engineering | The structure that makes READMEs useful (Diátaxis-aware) | `/readme` |
+| developer-guides | Tutorials, how-tos, deep dives | `/devguide` |
+| tutorial-creation | Pedagogy + sequencing for newcomer onboarding | `/tutorial` |
+| user-documentation | End-user docs, screenshots, video integration | `/user-doc` |
+| architecture-docs | ADRs, system diagrams, technology choices | `/adr` `/arch-doc` |
+| onboarding-docs | First-day, first-week, first-quarter onboarding | `/doc-onboarding` |
+| runbook-writing | Incident response runbooks, scheduled-action playbooks | `/write-runbook` |
+| changelog-management | What's worth a changelog entry, semver discipline | `/changelog` |
+| release-notes | Customer-facing changelog formatting | `/release-notes` |
+| error-messages | UX writing for error states (actionable, not blame-y) | `/doc-errors` |
+| cli-help-text | Inline help, examples, man-page generation | `/doc-cli` |
+| code-comments | When to comment, what to comment, anti-patterns | `/document-code` |
+| content-strategy | Information architecture, governance, lifecycle | `/content-plan` |
+| documentation-testing | Doctest-style verification; broken-link detection | `/test-docs` |
+| knowledge-bases | Internal wikis, FAQ, search-first design | `/build-kb` |
+| proposal-writing | RFC structure, decision-doc patterns | `/write-proposal` |
+| specification-writing | Technical specs, requirements, acceptance criteria | `/write-spec` |
+| style-guides | Writing style, vocabulary, voice + tone | `/style-guide` |
+| technical-blogging | Engineering blogs, distribution, post-mortems | `/blog-post` |
 
 ⭐ = depth-complete. Remaining 19 shell-improved.
 
+The 20 plugins carry 31 agents, 22 slash commands, and 28 skills. Where a plugin has more than one agent, command, or skill, each does a different job and its description says which to pick (for example `/api-docs` designs a whole docs set, while `/api-doc` generates reference docs from code). A 21st plugin, `libre-copy-hooks`, is optional and adds hooks instead (see below).
+
 ## Quick start
+
+### Install from Claude Code
+
+```
+/plugin marketplace add HermeticOrmus/LibreCopy-Claude-Code
+/plugin install api-documentation@libre-copy
+```
+
+The same from a terminal:
+
+```bash
+claude plugin marketplace add HermeticOrmus/LibreCopy-Claude-Code
+claude plugin install api-documentation@libre-copy
+```
+
+Install as many plugins as you need, then restart Claude Code to load them. `/plugin` inside Claude Code opens the plugin manager, where you can browse the rest of the pack.
+
+### Install from a clone
 
 ```bash
 git clone https://github.com/HermeticOrmus/LibreCopy-Claude-Code.git ~/projects/LibreCopy-Claude-Code
 cd ~/projects/LibreCopy-Claude-Code
 ./setup.sh
 ```
+
+`./setup.sh` registers the clone as the `libre-copy` marketplace and installs all 21 plugins through the Claude Code CLI. `./setup.sh --list` shows them, `./setup.sh --only api-documentation,readme-engineering` installs a subset, and `./setup.sh --uninstall` removes them.
+
+### Optional hooks
+
+`libre-copy-hooks` prints a one-line summary of the docs toolchain when a session starts, asks before Claude reads or edits `.env`, key, or secrets files or runs commands that destroy docs or history (recursive deletes of docs folders, `git reset --hard`, `git clean -f`, forced pushes), and after a docs edit names the Vale or markdownlint command to run. Add it with `/plugin install libre-copy-hooks@libre-copy`. Details: [plugins/libre-copy-hooks](plugins/libre-copy-hooks/README.md).
+
+### First prompt
 
 ```
 /api-docs design API documentation for a REST API with 30 endpoints. Multiple consumers (web, mobile, partners). Need: reference docs, getting-started guide, authentication walkthrough, code samples in 3 languages, change log.
@@ -68,6 +96,14 @@ See [QUICK_START.md](QUICK_START.md). Learning paths: [beginner](learning-paths/
 - [`markdown-discipline-skills`](https://github.com/HermeticOrmus/markdown-discipline-skills) — companion: strip AI-slop tells from markdown
 - [`vibe-engineer-skills`](https://github.com/HermeticOrmus/vibe-engineer-skills) — how to direct AI codegen well
 - [Diátaxis](https://diataxis.fr) — the canonical documentation framework
+
+## Feedback
+
+Starred this? Tell us what worked and what is missing: [open a feedback issue](https://github.com/HermeticOrmus/LibreCopy-Claude-Code/issues/new?template=feedback.yml). Every piece of feedback gets an answer, and changes that come from it are credited in the release notes.
+
+## Contributing
+
+PRs are welcome for plugin depth, real shipped-docs case studies, and style-guide examples. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 

@@ -10,7 +10,7 @@
 
 ## Your first doc
 
-Pick an API or feature you understand. Use `/api-docs` (or `/readme-engineering` in v0.3) to design the IA.
+Pick an API or feature you understand. Use `/api-docs` (or `/readme` for a project README) to design the IA.
 
 ## Read
 
