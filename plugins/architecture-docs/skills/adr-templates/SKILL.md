@@ -1,3 +1,8 @@
+---
+name: "adr-templates"
+description: "ADR reference: what an ADR is, the status lifecycle, numbering, the index file, when to write one, Nygard, MADR, and Y-statement formats, and how ADRs relate to C4 levels. Use when setting up or maintaining an ADR log."
+---
+
 # ADR Templates
 
 > Architecture Decision Record formats, status lifecycles, and architectural documentation patterns.

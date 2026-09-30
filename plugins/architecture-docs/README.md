@@ -10,16 +10,18 @@ Captures the "why" of architectural decisions (ADRs) and the "what" of system st
 
 | Agent | Role |
 |-------|------|
-| `arch-doc-writer` | C4 diagrams, ADRs (MADR format), arc42 sections, Mermaid/Structurizr DSL generation |
+| `diagram-narrator` | C4 diagrams, arc42 sections, Mermaid/Structurizr DSL generation, component and data-flow narratives |
+| `adr-writer` | ADRs (MADR format), options analysis, consequences, supersession |
 
 ## Commands
 
 | Command | Description |
 |---------|-------------|
-| `/doc-architecture diagram` | Generate C4 diagram at specified level (context/container/component) |
-| `/doc-architecture adr` | Create or list Architecture Decision Records |
-| `/doc-architecture export` | Export docs to HTML or Confluence |
-| `/doc-architecture review` | Review docs for staleness and coverage gaps |
+| `/arch-doc` | Write architecture documentation for a system, service, or component |
+| `/arch-doc diagram` | Generate C4 diagram at specified level (context/container/component) |
+| `/adr` | Create or list Architecture Decision Records |
+| `/arch-doc export` | Export docs to HTML or Confluence |
+| `/arch-doc review` | Review docs for staleness and coverage gaps |
 
 ## Skills
 
@@ -32,16 +34,16 @@ Captures the "why" of architectural decisions (ADRs) and the "what" of system st
 
 ```bash
 # Create a new ADR
-/doc-architecture adr --title "Adopt event sourcing for order state"
+/adr --title "Adopt event sourcing for order state"
 
 # Generate C4 container diagram in Mermaid
-/doc-architecture diagram --level container --format mermaid --output ./docs/arch/containers.md
+/arch-doc diagram --level container --format mermaid --output ./docs/arch/containers.md
 
 # Review existing architecture docs for gaps
-/doc-architecture review ./docs/arch/
+/arch-doc review ./docs/arch/
 
 # List all ADRs with status
-/doc-architecture adr --list
+/adr --list
 ```
 
 ## When to Use

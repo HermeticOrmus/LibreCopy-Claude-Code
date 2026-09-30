@@ -1,3 +1,8 @@
+---
+name: "arch-doc-patterns"
+description: "Architecture documentation patterns: choosing C4 levels, naming containers and relationships for humans, boundaries, concrete ADR consequences, arc42 section priorities, Mermaid sequence and ER diagrams, and anti-patterns such as diagram rot. Use when writing or reviewing architecture docs."
+---
+
 # Architecture Documentation Patterns
 
 ## C4 Model Patterns
