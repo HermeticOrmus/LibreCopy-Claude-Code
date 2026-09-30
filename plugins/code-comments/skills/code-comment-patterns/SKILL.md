@@ -1,3 +1,8 @@
+---
+name: "code-comment-patterns"
+description: "Inline comment rules: why not what, when a comment is required, TODO standards, placement, file headers, deprecation notices, and anti-patterns such as lying or commented-out code. Use when writing or reviewing inline comments."
+---
+
 # Code Comment Patterns
 
 ## The Core Rule: Why, Not What

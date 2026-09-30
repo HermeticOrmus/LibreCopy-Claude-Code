@@ -10,16 +10,17 @@ Transforms undocumented or poorly documented code into well-documented source wi
 
 | Agent | Role |
 |-------|------|
-| `comment-engineer` | JSDoc/TSDoc generation, Python docstrings, rustdoc, godoc, coverage analysis, deprecation patterns |
+| `docstring-generator` | JSDoc/TSDoc generation, Python docstrings, rustdoc, godoc, coverage analysis, deprecation patterns |
+| `comment-crafter` | Inline comments that explain why, what to comment, and comment rot prevention |
 
 ## Commands
 
 | Command | Description |
 |---------|-------------|
-| `/doc-code generate` | Add documentation comments to source files |
-| `/doc-code extract` | Extract docs into standalone reference document |
-| `/doc-code check-coverage` | Report documentation coverage with threshold |
-| `/doc-code update` | Detect and fix signature/documentation mismatches |
+| `/document-code generate` | Add documentation comments to source files |
+| `/document-code extract` | Extract docs into standalone reference document |
+| `/document-code check-coverage` | Report documentation coverage with threshold |
+| `/document-code update` | Detect and fix signature/documentation mismatches |
 
 ## Skills
 
@@ -32,16 +33,16 @@ Transforms undocumented or poorly documented code into well-documented source wi
 
 ```bash
 # Document a TypeScript file
-/doc-code generate --file src/auth.ts --style tsdoc
+/document-code generate --file src/auth.ts --style tsdoc
 
 # Check documentation coverage (require 80% minimum)
-/doc-code check-coverage --dir src/ --threshold 80 --only-public
+/document-code check-coverage --dir src/ --threshold 80 --only-public
 
 # Detect stale comments in a Python module
-/doc-code update --file src/processor.py
+/document-code update --file src/processor.py
 
 # Extract API reference from TypeScript
-/doc-code extract --dir src/ --output docs/api-reference.md
+/document-code extract --dir src/ --output docs/api-reference.md
 ```
 
 ## When to Use
