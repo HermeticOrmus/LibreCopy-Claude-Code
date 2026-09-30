@@ -10,7 +10,8 @@ The same code change means different things to different people. An API signatur
 
 | Agent | Role |
 |-------|------|
-| `release-notes-writer` | Audience-targeted release notes, breaking change docs, migration guides |
+| `release-note-writer` | Audience-targeted release notes, breaking change docs |
+| `migration-guide-writer` | Step-by-step migration guides with verification and rollback |
 
 ## Commands
 

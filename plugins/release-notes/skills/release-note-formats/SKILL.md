@@ -1,3 +1,8 @@
+---
+name: "release-note-formats"
+description: "Release note structures: release notes vs changelogs, audience needs, release types, formats by channel (GitHub release, blog, email, in-app), and a breaking change documentation standard. Use when choosing the shape and channel for release notes."
+---
+
 # Release Note Formats
 
 > Release note structures for different audiences, channels, and release types.
