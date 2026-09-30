@@ -4,8 +4,12 @@
 
 ## Contents
 - **Agent**: `api-doc-writer` — technical writer specializing in API documentation
+- **Agent**: `sdk-doc-generator`: client library guides with idiomatic examples per language
 - **Command**: `/api-docs` — structure design, example crafting, error catalog, changelog format
-- **Skill**: pattern library for OpenAPI, AsyncAPI, examples, errors, getting-started, changelogs
+- **Command**: `/api-doc`: generate reference docs from code, or `validate`, `publish`, and `diff` an OpenAPI spec
+- **Skill**: pattern library for OpenAPI, AsyncAPI, examples, errors, getting-started, changelogs (`api-documentation`)
+- **Skill**: `api-doc-patterns`: writing individual operations inside an OpenAPI spec
+- **Skill**: `openapi-patterns`: OpenAPI 3.x structure, naming, schemas, and auth schemes
 
 ## Key capabilities
 

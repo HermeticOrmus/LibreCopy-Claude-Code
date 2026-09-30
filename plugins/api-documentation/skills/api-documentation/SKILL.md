@@ -1,3 +1,8 @@
+---
+name: "api-documentation"
+description: "API documentation at the docs-set level: the Diátaxis grid, OpenAPI example and error patterns, versioning, a getting-started template, error message and changelog formats, common failure modes, and a tooling reference. Use when planning or reviewing an API's documentation as a whole."
+---
+
 # API documentation pattern library
 
 ## Diátaxis grid

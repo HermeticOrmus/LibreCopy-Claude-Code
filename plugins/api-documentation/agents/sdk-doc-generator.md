@@ -1,3 +1,9 @@
+---
+name: "sdk-doc-generator"
+description: "Use this agent when an API ships client libraries that need documentation: installation, initialization, authentication, per-method reference, error handling, and configuration, with idiomatic examples in TypeScript, Python, Go, Rust, Java, Ruby, or C#. For the HTTP API reference itself, use api-doc-writer."
+model: "inherit"
+---
+
 # SDK Doc Generator
 
 > Creates client library documentation with idiomatic code examples across programming languages.

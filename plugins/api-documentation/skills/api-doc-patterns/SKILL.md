@@ -1,3 +1,8 @@
+---
+name: "api-doc-patterns"
+description: "Writing inside an OpenAPI spec: summary vs description, parameter and requestBody documentation with examples, complete response coverage, string format annotations, x-codeSamples, and anti-patterns such as fake examples. Use when documenting individual operations in a spec."
+---
+
 # API Documentation Patterns
 
 ## Operation Documentation
