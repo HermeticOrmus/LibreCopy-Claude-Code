@@ -1,3 +1,8 @@
+---
+name: "style-guide-frameworks"
+description: "Style guide foundations: a comparison of industry style guides, style guide architecture, voice vs tone, automated style checking, and reading level assessment. Use when choosing a base guide or setting up enforcement."
+---
+
 # Style Guide Frameworks
 
 > Frameworks and reference patterns for building effective writing style guides.

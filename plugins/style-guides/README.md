@@ -10,7 +10,8 @@ A style guide is only useful if writers actually follow it. This plugin produces
 
 | Agent | Role |
 |-------|------|
-| `style-guide-curator` | Style guide authoring, terminology management, Vale configuration |
+| `style-guide-architect` | Style guide authoring, Vale configuration |
+| `terminology-manager` | Glossaries, preferred terms, terminology reviews |
 
 ## Commands
 
