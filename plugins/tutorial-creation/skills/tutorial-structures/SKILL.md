@@ -1,3 +1,8 @@
+---
+name: "tutorial-structures"
+description: "Tutorial structure frameworks: the tutorial spectrum, Diátaxis, structure patterns (build, fix, compare, migrate), step design rules, checkpoint design, and time estimation. Use when designing a tutorial's overall shape."
+---
+
 # Tutorial Structures
 
 > Pedagogical patterns and frameworks for creating effective technical tutorials.

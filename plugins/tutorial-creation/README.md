@@ -10,16 +10,17 @@ Most tutorials fail at step 3. The learner hits an error with no troubleshooting
 
 | Agent | Role |
 |-------|------|
-| `tutorial-creator` | Tutorial design, step writing, checkpoint placement, prerequisite analysis |
+| `tutorial-architect` | Tutorial design, learning paths, prerequisite analysis |
+| `step-writer` | Step writing, checkpoint placement, troubleshooting notes |
 
 ## Commands
 
 | Command | Description |
 |---------|-------------|
-| `/create-tutorial write` | Generate a complete tutorial |
-| `/create-tutorial outline` | Generate a tutorial structure before writing |
-| `/create-tutorial review` | Analyze a tutorial for learner experience issues |
-| `/create-tutorial checklist` | Generate a tutorial quality checklist |
+| `/tutorial write` | Generate a complete tutorial |
+| `/tutorial outline` | Generate a tutorial structure before writing |
+| `/tutorial review` | Analyze a tutorial for learner experience issues |
+| `/tutorial checklist` | Generate a tutorial quality checklist |
 
 ## Skills
 
@@ -32,13 +33,13 @@ Most tutorials fail at step 3. The learner hits an error with no troubleshooting
 
 ```bash
 # Write a complete tutorial
-/create-tutorial write --topic "Build a REST API with Hono and TypeScript" --level beginner
+/tutorial write --topic "Build a REST API with Hono and TypeScript" --level beginner
 
 # Generate an outline first
-/create-tutorial outline --topic "PostgreSQL full-text search" --sections 4
+/tutorial outline --topic "PostgreSQL full-text search" --sections 4
 
 # Review an existing tutorial
-/create-tutorial review tutorials/rest-api.md --check-steps --check-checkpoints
+/tutorial review tutorials/rest-api.md --check-steps --check-checkpoints
 ```
 
 ## Tutorial Quality Checklist
