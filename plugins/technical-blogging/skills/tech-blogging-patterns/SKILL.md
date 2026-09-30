@@ -1,3 +1,8 @@
+---
+name: "tech-blogging-patterns"
+description: "Writing patterns for technical posts: the developer reading pattern, before and after examples, the specificity standard, headline patterns, the code example quality bar, numbered takeaways, and anti-patterns such as the wall of theory. Use when drafting or editing a technical post."
+---
+
 # Tech Blogging Patterns
 
 ## The Developer Reading Pattern

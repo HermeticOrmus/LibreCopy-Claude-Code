@@ -1,3 +1,9 @@
+---
+name: "seo-optimizer"
+description: "Use this agent when a technical post or docs page needs to be found in search: titles, meta descriptions, heading hierarchy, internal and external links, schema markup (Article, HowTo, FAQPage), URL slugs, image alt text, and canonical URLs for cross-posts, optimized for readers first."
+model: "inherit"
+---
+
 # SEO Optimizer
 
 > Optimizes technical content for search engine discoverability without sacrificing quality or readability.

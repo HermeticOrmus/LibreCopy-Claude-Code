@@ -13,15 +13,16 @@ Covers tutorials, deep dives, case studies, comparisons, and release announcemen
 | Agent | Role |
 |-------|------|
 | `tech-blogger` | Technical post writing, headline generation, structure, code examples |
+| `seo-optimizer` | Search optimization for technical posts without keyword stuffing |
 
 ## Commands
 
 | Command | Description |
 |---------|-------------|
-| `/write-blog write` | Write a complete technical blog post |
-| `/write-blog outline` | Generate a structured outline before writing |
-| `/write-blog review` | Review a draft for quality and developer audience fit |
-| `/write-blog headline` | Generate headline options for a topic |
+| `/blog-post write` | Write a complete technical blog post |
+| `/blog-post outline` | Generate a structured outline before writing |
+| `/blog-post review` | Review a draft for quality and developer audience fit |
+| `/blog-post headline` | Generate headline options for a topic |
 
 ## Skills
 
@@ -34,19 +35,19 @@ Covers tutorials, deep dives, case studies, comparisons, and release announcemen
 
 ```bash
 # Write a tutorial post
-/write-blog write --topic "Type-safe SQL in TypeScript with Drizzle ORM" --type tutorial
+/blog-post write --topic "Type-safe SQL in TypeScript with Drizzle ORM" --type tutorial
 
 # Write an engineering case study
-/write-blog write --topic "How we reduced deploy time from 45min to 8min" --type case-study
+/blog-post write --topic "How we reduced deploy time from 45min to 8min" --type case-study
 
 # Write a technology comparison
-/write-blog write --topic "Bun vs Node.js for HTTP servers" --type comparison
+/blog-post write --topic "Bun vs Node.js for HTTP servers" --type comparison
 
 # Review an existing draft
-/write-blog review my-post.md --check-code --check-metrics
+/blog-post review my-post.md --check-code --check-metrics
 
 # Generate 5 headline options
-/write-blog headline --topic "Our migration from REST to GraphQL" --count 5
+/blog-post headline --topic "Our migration from REST to GraphQL" --count 5
 ```
 
 ## Post Quality Checklist

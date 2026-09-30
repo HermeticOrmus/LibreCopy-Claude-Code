@@ -1,3 +1,8 @@
+---
+name: "blog-structures"
+description: "Blog post structures: the anatomy of a technical post, structures per article type, writing voice, code example guidelines, and engagement metrics to target. Use when planning the shape of a technical post."
+---
+
 # Blog Structures
 
 > Structural patterns and frameworks for different types of technical blog posts.
