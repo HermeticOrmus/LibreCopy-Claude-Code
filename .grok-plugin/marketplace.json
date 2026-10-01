@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Technical writing and documentation engineering plugins for Claude Code: API docs, READMEs, changelogs, release notes, tutorials, runbooks, specs, style guides, and more.",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "plugins": [
     {
